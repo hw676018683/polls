@@ -66,3 +66,5 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'ffaker'
 end
+
+gem 'omniauth-oauth2'

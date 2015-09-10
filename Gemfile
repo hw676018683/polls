@@ -53,6 +53,8 @@ gem 'puma'
 group :development do
   gem 'better_errors'
   gem 'quiet_assets'
+  gem 'guard'
+  gem 'guard-minitest'
 end
 
 group :development, :test do

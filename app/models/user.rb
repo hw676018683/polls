@@ -15,6 +15,6 @@ class User < ActiveRecord::Base
   end
 
   def remember_token
-    to_sgid(expires_in: 2.days, for: 'sign_in')
+    to_sgid(expires_in: 2.weeks, for: 'sign_in')
   end
 end

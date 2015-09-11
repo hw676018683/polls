@@ -14,8 +14,9 @@ module SessionsHelper
   end
 
   def remember_me
-    cookies.permanent[:remember_token] = {
+    cookies[:remember_token] = {
       value: current_user.remember_token,
+      expires: 2.weeks.from_now,
       httponly: true
     }
   end

@@ -45,7 +45,7 @@ group :development do
   gem 'spring'
 end
 
-
+gem 'normalize-rails'
 gem 'bourbon'
 gem 'font-awesome-rails'
 gem 'slim-rails'

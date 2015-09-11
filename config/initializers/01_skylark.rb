@@ -6,7 +6,8 @@ module OmniAuth
       option :name, :skylark
 
       option :client_options, {
-        site: 'http://skylarkly.com',
+        # site: 'http://skylarkly.com',
+        site: 'http://127.0.0.1:3000',
         authorize_url: '/oauth/authorize'
       }
 

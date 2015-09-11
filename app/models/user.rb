@@ -10,6 +10,11 @@ class User < ActiveRecord::Base
       user.phone = auth_hash[:info][:phone]
       user.headimgurl = auth_hash[:info][:headimgurl]
       user.save
+      user
     end
+  end
+
+  def remember_token
+    to_sgid(expires_in: 2.days, for: 'sign_in')
   end
 end

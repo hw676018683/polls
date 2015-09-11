@@ -18,4 +18,21 @@ class UserTest < ActiveSupport::TestCase
       @user.reload
     end
   end
+
+  test 'should create inexistent user' do
+    auth_hash = OmniAuth.config.mock_auth[:skylark]
+
+    assert_difference('User.count', 1) do
+      User.from_omniauth(auth_hash)
+    end
+  end
+
+  test 'should update existent user' do
+    auth_hash = OmniAuth.config.mock_auth[:skylark]
+    create(:user, uid: auth_hash['uid'])
+
+    assert_no_difference('User.count') do
+      User.from_omniauth(auth_hash)
+    end
+  end
 end

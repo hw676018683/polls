@@ -14,7 +14,7 @@ module SessionsHelper
   end
 
   def remember_me
-    cookies[:remember_token] = {
+    cookies[:_polls_remember_token] = {
       value: current_user.remember_token,
       expires: 2.weeks.from_now,
       httponly: true
@@ -46,8 +46,8 @@ module SessionsHelper
   end
 
   def sign_in_from_cookies
-    if cookies[:remember_token].present?
-      if user = GlobalID::Locator.locate_signed(cookies[:remember_token], for: 'sign_in')
+    if cookies[:_polls_remember_token].present?
+      if user = GlobalID::Locator.locate_signed(cookies[:_polls_remember_token], for: 'sign_in')
         session[:current_user_id] = user.id
         user
       else
@@ -58,7 +58,7 @@ module SessionsHelper
   end
 
   def forget_me
-    cookies.delete :remember_token
+    cookies.delete :_polls_remember_token
   end
 
   def store_location(url = nil)

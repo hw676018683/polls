@@ -16,7 +16,7 @@ class SessionsControllerTest < ActionController::TestCase
   test 'should sign_in the user' do
     get :create, provider: :skylark
     assert_not_nil session[:current_user_id]
-    assert_not_nil cookies[:remember_token]
+    assert_not_nil cookies[:_polls_remember_token]
   end
 
   test 'should redirect to root_path when signed_in' do

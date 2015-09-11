@@ -70,3 +70,5 @@ group :development, :test do
 end
 
 gem 'omniauth-oauth2'
+
+gem 'simditor'

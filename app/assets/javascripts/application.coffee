@@ -16,5 +16,6 @@
 #= require turbolinks
 
 #= require headroom.min
+#= require simditor
 
 #= require app

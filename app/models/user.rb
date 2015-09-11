@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   validates :uid, presence: true
   validates :name, presence: true
 
+  has_many :polls
+
   class << self
     def from_omniauth(auth_hash)
       user = find_or_create_by(uid: auth_hash[:uid])

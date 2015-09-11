@@ -8,4 +8,14 @@ html
     = csrf_meta_tags
 
   body
-    = yield
+    header#header.header-fixed
+      .container
+        nav#nav.nav-wrapper role='navigation'
+          = link_to root_path, class: 'user' do
+            = image_tag current_user.headimgurl, class: 'user-headimg'
+            b.user-name= current_user.name
+        = link_to root_path, class: 'brand' do
+          = image_tag 'logo.png', class: 'brand-logo'
+    article
+      .container
+        = yield

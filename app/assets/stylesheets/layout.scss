@@ -1,0 +1,51 @@
+.header-fixed {
+  background: #2E2F38;
+  position: fixed;
+  z-index: 10;
+  right: 0;
+  left: 0;
+  top: 0;
+
+  .brand {
+    position: relative;
+    padding: 1rem;
+    display: inline-block;
+    text-decoration: none;
+
+    .brand-logo {
+      height: 1.6rem;
+      width: 1.6rem;
+    }
+  }
+
+  .nav-wrapper {
+    position: relative;
+    float: right;
+    padding: 1rem;
+
+    .user {
+      display: inline-block;
+      text-decoration: none;
+      border: 0;
+
+      .user-headimg {
+        height: 1.6rem;
+        width: 1.6rem;
+        vertical-align: middle;
+        margin-right: .3rem;
+
+        @include border-top-radius(2px);
+        @include border-right-radius(2px);
+        @include border-bottom-radius(2px);
+        @include border-left-radius(2px);
+      }
+      .user-name {
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+div.container {
+  @include outer-container;
+}

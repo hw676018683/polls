@@ -45,6 +45,9 @@
     }
   }
 }
+.main {
+  margin-top: 5rem;
+}
 
 div.container {
   @include outer-container;

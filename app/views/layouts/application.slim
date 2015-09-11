@@ -16,6 +16,6 @@ html
             b.user-name= current_user.name
         = link_to root_path, class: 'brand' do
           = image_tag 'logo.png', class: 'brand-logo'
-    article
+    article.main
       .container
         = yield

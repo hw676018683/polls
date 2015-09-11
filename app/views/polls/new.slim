@@ -1,0 +1,5 @@
+= form_for @poll do |f|
+  = f.text_field :title, class: 'title', placeholder: '输入标题'
+  = f.text_area :description, class: 'simditor-editor'
+
+  = f.submit

@@ -21,6 +21,19 @@ module SessionsHelper
     }
   end
 
+  def sign_in_required
+    unless signed_in?
+      store_location
+      redirect_to auth_path(:skylark)
+    end
+  end
+
+  def no_signed_in_required
+    if signed_in?
+      redirect_to root_path
+    end
+  end
+
   private
   def sign_in_from_session
     if session[:current_user_id].present?
@@ -42,5 +55,20 @@ module SessionsHelper
         nil
       end
     end
+  end
+
+  def forget_me
+    cookies.delete :remember_token
+  end
+
+  def store_location(url = nil)
+    if url
+      session[:return_to] = url
+    else
+      session[:return_to] = request.url if request.get?
+    end
+  end
+  def redirect_back_or(default)
+    redirect_to(session.delete(:return_to) || default)
   end
 end

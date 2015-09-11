@@ -1,13 +1,10 @@
 require 'test_helper'
 
 class SessionsControllerTest < ActionController::TestCase
+  include SessionsHelper
+
   def setup
     request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:skylark]
-  end
-
-  test 'should get create' do
-    get :create, provider: :skylark
-    assert_response :success
   end
 
   test 'should create user' do
@@ -20,6 +17,14 @@ class SessionsControllerTest < ActionController::TestCase
     get :create, provider: :skylark
     assert_not_nil session[:current_user_id]
     assert_not_nil cookies[:remember_token]
+  end
+
+  test 'should redirect to root_path when signed_in' do
+    user = create :user
+    sign_in user
+
+    get :create, provider: :skylark
+    assert_redirected_to root_path
   end
 
 end

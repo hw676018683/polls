@@ -46,6 +46,7 @@ group :development do
 end
 
 gem 'normalize-rails'
+gem 'neat'
 gem 'bourbon'
 gem 'font-awesome-rails'
 gem 'slim-rails'

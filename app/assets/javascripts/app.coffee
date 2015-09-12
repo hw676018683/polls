@@ -1,3 +1,5 @@
+#= require backbone/polls
+
 $ () ->
   headroom = new Headroom($('#header')[0], {
     offset: 500,

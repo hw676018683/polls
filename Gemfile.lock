@@ -188,8 +188,6 @@ GEM
     rb-fsevent (0.9.6)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
-    rdoc (4.2.0)
-      json (~> 1.4)
     sass (3.4.18)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -197,9 +195,6 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    sdoc (0.4.1)
-      json (~> 1.7, >= 1.7.7)
-      rdoc (~> 4.0)
     shellany (0.0.1)
     simditor (2.2.4)
     slim (3.0.6)
@@ -243,7 +238,6 @@ DEPENDENCIES
   awesome_print
   better_errors
   bourbon
-  byebug
   coffee-rails (~> 4.1.0)
   database_cleaner
   factory_girl_rails
@@ -265,7 +259,6 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.2.4)
   sass-rails (~> 5.0)
-  sdoc (~> 0.4.0)
   simditor
   slim-rails
   spring

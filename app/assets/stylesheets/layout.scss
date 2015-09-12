@@ -53,3 +53,6 @@
 div.container {
   @include outer-container;
 }
+.simditor .simditor-wrapper.toolbar-floating .simditor-toolbar {
+  top: 4rem !important;
+}

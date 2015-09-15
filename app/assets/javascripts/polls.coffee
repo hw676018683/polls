@@ -11,17 +11,15 @@ window.Polls =
       })
       headroom.init()
 
-  initEditor: ->
-    if $('.simditor-editor').length
-      new Simditor
-        textarea: $('.simditor-editor')
-        placeholder: '请输入描述'
-        toolbar: [
-          'title','bold','italic','underline','strikethrough','color','|'
-            'ol','ul','blockquote','code','table','link','image','hr','|'
-            'indent','outdent'
-        ]
+  initEditor: (editor_el)->
+    new Simditor
+      textarea: editor_el
+      placeholder: '请输入描述'
+      toolbar: [
+        'title','bold','italic','underline','strikethrough','color','|'
+          'ol','ul','blockquote','code','table','link','image','hr','|'
+          'indent','outdent'
+      ]
 
 $ () ->
   Polls.initHeadroom()
-  Polls.initEditor()

@@ -43,4 +43,5 @@ gem 'normalize-rails'
 gem 'neat'
 gem 'bourbon'
 gem 'font-awesome-rails'
+gem 'backbone-on-rails'
 

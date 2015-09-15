@@ -1,4 +1,4 @@
-window.Polls =
+window.App =
   initHeadroom: ->
     if $('#headroom').length
       headroom = new Headroom($('#header')[0], {
@@ -23,5 +23,5 @@ window.Polls =
         ]
 
 $ () ->
-  Polls.initHeadroom()
-  Polls.initEditor()
+  App.initHeadroom()
+  App.initEditor()

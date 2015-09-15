@@ -1,4 +1,4 @@
-window.Polls =
+window.App =
   Models: {}
   Collections: {}
   Views: {}
@@ -6,4 +6,4 @@ window.Polls =
   initialize: -> console.log 'Hello from Backbone!'
 
 $(document).ready ->
-  Polls.initialize()
+  App.initialize()

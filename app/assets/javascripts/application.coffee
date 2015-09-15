@@ -6,5 +6,5 @@
 #= require headroom.min
 #= require simditor
 
-#= require app
+#= require polls
 #= require backbone/application

@@ -1,2 +1,2 @@
-class Polls.Models.Question extends Backbone.Model
+class App.Models.Question extends Backbone.Model
 

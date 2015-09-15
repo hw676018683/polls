@@ -1,4 +1,3 @@
-#= require backbone/polls
 window.Polls =
   initHeadroom: ->
     if $('#headroom').length

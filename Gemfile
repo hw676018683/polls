@@ -38,11 +38,9 @@ end
 
 gem 'omniauth-oauth2'
 
-# Front end
 gem 'simditor'
 gem 'normalize-rails'
 gem 'neat'
 gem 'bourbon'
 gem 'font-awesome-rails'
-gem 'rails-backbone'
 

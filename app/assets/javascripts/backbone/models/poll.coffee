@@ -1,8 +1,13 @@
-class App.Models.Poll extends Backbone.Model
+class App.Models.Poll extends Backbone.NestedAttributesModel
   defaults:
     title: ''
     description: ''
 
-  initialize: () ->
-    @set questions: new App.Collections.Questions()
+  relations: [
+    {
+      key:  'questions'
+      relatedModel: () ->
+        App.Collections.Questions
+    }
+  ]
 

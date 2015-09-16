@@ -44,4 +44,5 @@ gem 'neat'
 gem 'bourbon'
 gem 'font-awesome-rails'
 gem 'backbone-on-rails'
+gem 'backbone-nested-attributes'
 

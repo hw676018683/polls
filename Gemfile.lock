@@ -38,6 +38,8 @@ GEM
       tzinfo (~> 1.1)
     arel (6.0.3)
     awesome_print (1.6.1)
+    backbone-nested-attributes (0.5.0)
+      rails (>= 3.2.8)
     backbone-on-rails (1.2.0.0)
       eco
       ejs
@@ -247,6 +249,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
+  backbone-nested-attributes
   backbone-on-rails
   better_errors
   bourbon

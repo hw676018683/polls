@@ -1,5 +1,6 @@
 #= require underscore
 #= require backbone
+#= require backbone-nested-attributes/all
 #= require ./polls
 #= require_tree ./ultis
 #= require_tree ./templates

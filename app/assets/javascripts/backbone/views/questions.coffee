@@ -17,3 +17,6 @@ class App.Views.Questions extends Backbone.View
     questionView = new App.Views.Question model: question
     @$el.append(questionView.render().el)
 
+  remove: (question) ->
+    @collection.remove(question)
+

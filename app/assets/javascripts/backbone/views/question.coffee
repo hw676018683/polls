@@ -4,8 +4,11 @@ class App.Views.Question extends Backbone.View
 
   template: App.Templates.Question
 
+  events:
+    'click .js-remove-question': 'removeQuestion'
+
   render: () ->
-    @listenTo(@model, 'destroy', @remove)
+    @listenTo(@model, 'remove', @remove)
 
     @$el.html @template(@model.attributes)
 
@@ -15,3 +18,6 @@ class App.Views.Question extends Backbone.View
 
     @
 
+  # Events
+  removeQuestion: () ->
+    @model.destroy()

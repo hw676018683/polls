@@ -19,5 +19,7 @@ class App.Views.Question extends Backbone.View
     @
 
   # Events
-  removeQuestion: () ->
+  removeQuestion: (e) ->
+    e.stopPropagation()
+
     @model.destroy()

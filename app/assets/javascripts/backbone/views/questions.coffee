@@ -29,6 +29,8 @@ class App.Views.Questions extends Backbone.View
 
 
   # Events
-  addQuestion: () ->
+  addQuestion: (e) ->
+    e.stopPropagation()
+
     @collection.push new App.Models.Question
 

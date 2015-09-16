@@ -4,10 +4,12 @@
 /
 /  = f.submit
 
-#poll_form.poll
+#poll_form
 
 coffee:
   poll = new App.Models.Poll
+    title: '你好'
+    description: '<h2>Head 2</h2>'
   window.poll_form = new App.Views.PollForm
     el: '#poll_form'
     model: poll

@@ -19,5 +19,10 @@ class App.Views.PollForm extends Backbone.View
     description_editor.on 'valuechanged', () ->
       self.model.set description: @getValue()
 
+    @$el.append @questionsView().el
     @
+
+  questionsView: () ->
+    new App.Views.Questions
+      collection: @model.get('questions')
 

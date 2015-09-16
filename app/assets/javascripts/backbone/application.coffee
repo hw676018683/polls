@@ -1,6 +1,7 @@
 #= require underscore
 #= require backbone
 #= require ./polls
+#= require_tree ./ultis
 #= require_tree ./templates
 #= require_tree ./models
 #= require_tree ./collections

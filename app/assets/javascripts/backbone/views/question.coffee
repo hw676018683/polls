@@ -16,7 +16,12 @@ class App.Views.Question extends Backbone.View
     @$title.change () =>
       @model.set title: @$title.val().trim()
 
+    @$el.append @choicesView().el
     @
+
+  choicesView: () ->
+    new App.Views.Choices
+      collection: @model.get('choices')
 
   # Events
   removeQuestion: (e) ->

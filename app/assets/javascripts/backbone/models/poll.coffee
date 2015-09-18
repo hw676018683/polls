@@ -5,7 +5,7 @@ class App.Models.Poll extends Backbone.NestedAttributesModel
 
   relations: [
     {
-      key:  'questions'
+      key: 'questions'
       relatedModel: () ->
         App.Collections.Questions
     }

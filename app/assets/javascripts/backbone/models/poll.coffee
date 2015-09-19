@@ -2,6 +2,7 @@ class App.Models.Poll extends Backbone.NestedAttributesModel
   defaults:
     title: ''
     description: ''
+    cover: '/covers/cover-1.png'
 
   relations: [
     {

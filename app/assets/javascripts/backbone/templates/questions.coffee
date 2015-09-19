@@ -1,3 +1,3 @@
 App.Templates.Questions = _.template """
-  <a href='##' class='js-add-question'>add question</a>
+  <span class='btn add-question-btn js-add-question'>+ 添加问题</span>
 """

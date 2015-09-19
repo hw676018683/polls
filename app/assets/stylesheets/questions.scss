@@ -1,6 +1,19 @@
 .questions {
   margin-top: 2rem;
   @include outer-container;
+
+  .add-question-btn {
+    margin-top: 2rem;
+    @include fill-parent();
+    display: inline-block;
+    color: hsla(232, 10%, 30%, .3);
+    background: $border-color;
+
+    &:hover {
+      color: hsla(232, 10%, 30%, .7);
+      background: #CDCDCD;
+    }
+  }
 }
 
 .question {

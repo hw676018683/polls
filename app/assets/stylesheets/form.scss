@@ -14,6 +14,7 @@ input {
 .btn {
   @include padding(6px 10px);
   cursor: pointer;
+  text-align: center;
 
   &.btn-primary {
     color: #ffffff;

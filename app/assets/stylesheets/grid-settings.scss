@@ -4,6 +4,7 @@
 $max-width: 640px;
 $primary-color: #3C3E49;
 $border-color: #D8D8D8;
+$accessory-color: #95885D;
 
 @mixin background-border() {
   @include border-top-radius(2px);

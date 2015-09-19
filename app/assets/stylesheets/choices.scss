@@ -37,5 +37,15 @@
     @include span-columns(1);
     @include omega;
     text-align: right;
+
+    i {
+      padding: 0 .3rem;
+      cursor: pointer;
+      color: $border-color;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
   }
 }

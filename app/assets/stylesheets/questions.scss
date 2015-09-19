@@ -39,18 +39,17 @@
     .actions {
       text-align: right;
       @include span-columns(2);
+
+      i {
+        padding: 0 .3rem;
+        cursor: pointer;
+        color: $border-color;
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
     }
   }
 }
 
-.actions {
-  i {
-    padding: 0 .3rem;
-    cursor: pointer;
-    color: $border-color;
-
-    &:hover {
-      color: $primary-color;
-    }
-  }
-}

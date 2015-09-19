@@ -64,3 +64,8 @@ div.container {
 .simditor .simditor-wrapper.toolbar-floating .simditor-toolbar {
   top: 4rem !important;
 }
+
+.card {
+  @include background-border;
+  background: #fff;
+}

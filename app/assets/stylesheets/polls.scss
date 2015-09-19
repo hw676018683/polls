@@ -1,3 +1,11 @@
+.polls {
+  &>.actions {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    text-align: right;
+  }
+}
+
 .poll {
   @include background-border();
 

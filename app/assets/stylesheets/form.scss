@@ -1,3 +1,7 @@
+input {
+  outline: none;
+  border: 0;
+}
 #{$all-text-inputs} {
   border: 0;
 }

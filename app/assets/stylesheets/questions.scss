@@ -1,0 +1,42 @@
+.questions {
+  margin-top: 2rem;
+}
+
+.question {
+  margin-top: 2rem;
+  background: #ffffff;
+  @include background-border();
+
+  & > .title {
+    background: #F5F5F5;
+    padding: 1rem 2rem;
+    @include fill-parent();
+    @include row(table);
+
+
+    .input {
+      padding: .5rem 0;
+      font-size: 1.2rem;
+      font-weight: bold;
+      background: transparent;
+      @include span-columns(10);
+    }
+
+    .actions {
+      text-align: right;
+      @include span-columns(2);
+    }
+  }
+}
+
+.actions {
+  i {
+    padding: 0 .3rem;
+    cursor: pointer;
+    color: $border-color;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}

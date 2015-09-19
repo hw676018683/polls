@@ -57,6 +57,10 @@ body {
 div.container {
   @include outer-container;
 }
+.simditor {
+  border: 0;
+  border-top: 1px solid #c9d8db;
+}
 .simditor .simditor-wrapper.toolbar-floating .simditor-toolbar {
   top: 4rem !important;
 }

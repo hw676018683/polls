@@ -2,4 +2,12 @@
 
 // Change the grid settings
 $max-width: 640px;
+$primary-color: #3C3E49;
+$border-color: #D8D8D8;
 
+@mixin background-border() {
+  @include border-top-radius(2px);
+  @include border-width(1px 1px 3px 1px);
+  @include border-color($border-color);
+  @include border-style(solid);
+}

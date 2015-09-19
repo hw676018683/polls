@@ -1,3 +1,5 @@
 App.Templates.Choices = _.template """
-  <a href='##' class='js-add-choice'>add choice</a>
+  <div class="actions">
+    <span class="btn btn-primary js-add-choice">+</span>
+  </div>
 """

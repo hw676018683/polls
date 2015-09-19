@@ -1,6 +1,10 @@
 .choices {
   margin-top: 2rem;
   @include outer-container;
+
+  .actions {
+    margin: 1rem 3rem;
+  }
 }
 
 .choice {

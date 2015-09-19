@@ -1,7 +1,26 @@
 input {
   outline: none;
   border: 0;
+
+  @include placeholder {
+    color: $border-color;
+  }
 }
+
 #{$all-text-inputs} {
   border: 0;
+}
+
+.btn {
+  @include padding(6px 10px);
+  cursor: pointer;
+
+  &.btn-primary {
+    color: #ffffff;
+    background: hsla(231, 10%, 26%, .9);
+
+    &:hover {
+      background: $primary-color;
+    }
+  }
 }

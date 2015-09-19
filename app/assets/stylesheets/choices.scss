@@ -1,0 +1,37 @@
+.choices {
+  margin-top: 2rem;
+  @include outer-container;
+}
+
+.choice {
+  padding: 1rem 3rem;
+  @include fill-parent();
+  @include row(table);
+
+
+  input {
+    background: transparent;
+    border-bottom: 1px solid $border-color;
+    @include fill-parent();
+  }
+
+  .title {
+    @include span-columns(9);
+  }
+
+  .limit {
+    @include span-columns(2);
+  }
+
+  .title,
+  .limit {
+    @include omega;
+    padding-right: .5rem;
+  }
+
+  .actions {
+    @include span-columns(1);
+    @include omega;
+    text-align: right;
+  }
+}

@@ -1,5 +1,11 @@
 App.Templates.Choice = _.template """
-  <input class="title" placeholder="输入标题" type="text" value="<%= title %>">
-  <input class="limit" placeholder="输入限制" type="text" value="<%= limit %>">
-  <span class='js-remove-choice'>remove choice</span>
+  <div class='title'>
+    <input placeholder="输入选项" type="text" value="<%= title %>">
+  </div>
+  <div class='limit'>
+    <input placeholder="输入限额" type="text" value="<%= limit %>">
+  </div>
+  <span class='actions'>
+    <i class='fa fa-trash-o action js-remove-choice'></i>
+  </span>
 """

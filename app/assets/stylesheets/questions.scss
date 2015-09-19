@@ -1,5 +1,6 @@
 .questions {
   margin-top: 2rem;
+  @include outer-container;
 }
 
 .question {

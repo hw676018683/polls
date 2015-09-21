@@ -6,6 +6,7 @@ class App.Views.Question extends Backbone.View
 
   events:
     'click .js-remove-question': 'removeQuestion'
+    'click .js-toggle-question': 'toggleQuestion'
 
   render: () ->
     @listenTo(@model, 'remove', @remove)
@@ -17,6 +18,9 @@ class App.Views.Question extends Backbone.View
       @model.set title: @$title.val().trim()
 
     @$el.append @choicesView().el
+
+    @$choicesBody = @$('.choices')
+
     @
 
   choicesView: () ->
@@ -28,3 +32,12 @@ class App.Views.Question extends Backbone.View
     e.stopPropagation()
 
     @model.destroy()
+
+  # Events
+  toggleQuestion: (e) ->
+    e.stopPropagation()
+
+    @$choicesBody.slideToggle()
+    @$('.js-toggle-question').toggleClass('fa-angle-up')
+    @$('.js-toggle-question').toggleClass('fa-angle-down')
+

@@ -11,11 +11,11 @@ class App.Views.Choice extends Backbone.View
 
     @$el.html @template(@model.attributes)
 
-    @$title = @$('.title')
+    @$title = @$('.title input')
     @$title.change () =>
       @model.set title: @$title.val().trim()
 
-    @$limit = @$('.limit')
+    @$limit = @$('.limit input')
     @$limit.change () =>
       @model.set limit: (parseInt(@$limit.val().trim()) or 0)
 

@@ -13,7 +13,7 @@ class App.Views.Question extends Backbone.View
 
     @$el.html @template(@model.attributes)
 
-    @$title = @$('.title')
+    @$title = @$('.input')
     @$title.change () =>
       @model.set title: @$title.val().trim()
 

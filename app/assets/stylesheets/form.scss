@@ -62,4 +62,8 @@ input {
       background: $primary-color;
     }
   }
+
+  &:focus {
+    outline: none;
+  }
 }

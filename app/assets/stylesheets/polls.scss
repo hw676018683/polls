@@ -1,8 +1,14 @@
 .polls {
   &>.actions {
     margin-top: 2rem;
-    padding: 1rem 2rem;
-    text-align: right;
+    text-align: center;
+    @include fill-parent();
+    @include row(table);
+
+    .btn {
+      padding: .8rem 0;
+      @include span-columns(6);
+    }
   }
 }
 

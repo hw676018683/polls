@@ -4,6 +4,7 @@
 
   .add-question-btn {
     margin-top: 2rem;
+    padding: .8rem 0;
     @include fill-parent();
     display: inline-block;
     color: hsla(232, 10%, 30%, .3);

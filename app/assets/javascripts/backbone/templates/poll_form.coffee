@@ -6,7 +6,7 @@ App.Templates.PollForm = _.template """
   </div>
   <div class='questions'></div>
   <div class='card actions'>
-    <button class='btn btn-outline'><i class='fa fa-save'></i> 保存</button>
-    <button class='btn btn-success'><i class='fa fa-envelope-o'></i> 发布</button>
+    <button class='btn btn-outline js-save-poll'><i class='fa fa-save'></i> 保存</button>
+    <button class='btn btn-success js-publish-poll'><i class='fa fa-envelope-o'></i> 发布</button>
   </div>
 """

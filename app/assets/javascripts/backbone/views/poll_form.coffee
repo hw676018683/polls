@@ -1,6 +1,10 @@
 class App.Views.PollForm extends Backbone.View
   template: App.Templates.PollForm
 
+  events:
+    'click .js-save-poll': 'savePoll'
+    'click .js-publish-poll': 'savePoll'
+
   initialize: () ->
     @render()
 
@@ -26,3 +30,11 @@ class App.Views.PollForm extends Backbone.View
     new App.Views.Questions
       collection: @model.get('questions')
 
+  # Events
+  savePoll: (e)->
+    e.stopPropagation()
+
+    @model.save {},
+      nested: true,
+      success: (model, response, options) =>
+        @model = model

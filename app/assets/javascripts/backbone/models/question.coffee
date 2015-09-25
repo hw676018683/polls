@@ -6,7 +6,7 @@ class App.Models.Question extends Backbone.NestedAttributesModel
     {
       key: 'choices'
       relatedModel: () ->
-        App.Collections.Choice
+        App.Collections.Choices
     }
   ]
 

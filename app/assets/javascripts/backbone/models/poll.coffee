@@ -4,6 +4,8 @@ class App.Models.Poll extends Backbone.NestedAttributesModel
     description: ''
     cover: '/covers/cover-1.png'
 
+  urlRoot: '/polls'
+
   relations: [
     {
       key: 'questions'
@@ -14,5 +16,3 @@ class App.Models.Poll extends Backbone.NestedAttributesModel
 
   initialize: () ->
     @.get('questions').push new App.Models.Question
-
-

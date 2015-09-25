@@ -5,4 +5,14 @@ class ApplicationController < ActionController::Base
 
   include ApplicationHelper
   include SessionsHelper
+
+  private
+
+  def render_json_error(obj = nil)
+    if obj.respond_to? :errors
+      render json: obj.errors, status: :unprocessable_entity
+    else
+      render json: MultiJson.dump(base: ['参数错误']), status: :unprocessable_entity
+    end
+  end
 end

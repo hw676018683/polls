@@ -33,4 +33,5 @@ class App.Views.Questions extends Backbone.View
     e.stopPropagation()
 
     @collection.push new App.Models.Question
+      choices: new App.Models.Choice
 

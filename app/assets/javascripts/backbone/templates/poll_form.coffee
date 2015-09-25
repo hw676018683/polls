@@ -10,3 +10,10 @@ App.Templates.PollForm = _.template """
     <button class='btn btn-success js-publish-poll'><i class='fa fa-envelope-o'></i> 发布</button>
   </div>
 """
+
+App.Templates.DisableSavePollBtnReplacement = _.template """
+  <i class='fa fa fa-spinner fa-pulse'></i> 保存中 ...
+"""
+App.Templates.DisablePublishPollBtnReplacement = _.template """
+  <i class='fa fa fa-spinner fa-pulse'></i> 发布中 ...
+"""

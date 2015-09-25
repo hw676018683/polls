@@ -25,4 +25,4 @@ class App.Views.Choice extends Backbone.View
   removeChoice: (e) ->
     e.stopPropagation()
 
-    @model.destroy()
+    @model.collection.remove(@model)

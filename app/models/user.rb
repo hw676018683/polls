@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   validates :uid, presence: true
   validates :name, presence: true
 
-  has_many :polls
+  has_many :polls, dependent: :destroy
 
   class << self
     def from_omniauth(auth_hash)

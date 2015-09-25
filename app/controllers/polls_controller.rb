@@ -1,6 +1,6 @@
 class PollsController < ApplicationController
   before_action :sign_in_required
-  before_action :find_poll, only: [:show, :destroy]
+  before_action :find_poll, only: [:show, :destroy, :update]
 
   def new
     @poll = current_user.polls.new
@@ -16,6 +16,14 @@ class PollsController < ApplicationController
   end
 
   def show
+  end
+
+  def update
+    if @poll.update poll_params
+      render :show
+    else
+      render_json_error @poll
+    end
   end
 
   def destroy

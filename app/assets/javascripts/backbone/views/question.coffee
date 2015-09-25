@@ -32,7 +32,7 @@ class App.Views.Question extends Backbone.View
     e.stopPropagation()
 
     @$el.slideUp 'fast', () =>
-      @model.destroy()
+      @model.collection.remove(@model)
 
   toggleQuestion: (e) ->
     e.stopPropagation()

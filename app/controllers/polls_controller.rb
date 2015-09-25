@@ -25,7 +25,16 @@ class PollsController < ApplicationController
 
   private
   def poll_params
-    params.require(:poll).permit(:title, :description)
+    params.require(:poll).permit(:title, :description,
+                                 questions_attributes:
+                                 [
+                                   :id, :title, :multiple, :_destroy,
+                                   choices_attributes:
+                                   [
+                                     :id, :title, :limit, :_destroy
+                                   ]
+                                 ]
+                                )
   end
 
   def find_poll

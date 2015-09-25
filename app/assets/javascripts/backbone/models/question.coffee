@@ -6,10 +6,6 @@ class App.Models.Question extends Backbone.NestedAttributesModel
     {
       key: 'choices'
       relatedModel: () ->
-        App.Collections.Choices
+        App.Models.Choice
     }
   ]
-
-  initialize: () ->
-    @.get('choices').push new App.Models.Choice
-

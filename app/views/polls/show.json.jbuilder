@@ -7,3 +7,4 @@ end
 json.questions do
   json.partial! partial: 'questions/question', collection: @poll.questions, as: :question
 end
+

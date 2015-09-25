@@ -3,4 +3,6 @@ class Question < ActiveRecord::Base
 
   belongs_to :poll
   has_many :choices
+
+  accepts_nested_attributes_for :choices, allow_destroy: true
 end

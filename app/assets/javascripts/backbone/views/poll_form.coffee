@@ -35,6 +35,4 @@ class App.Views.PollForm extends Backbone.View
     e.stopPropagation()
 
     @model.save {},
-      nested: true,
-      success: (model, response, options) =>
-        @model = model
+      nested: true

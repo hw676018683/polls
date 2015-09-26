@@ -95,6 +95,10 @@ GEM
       minitest (>= 3.0)
     hashie (3.4.1)
     i18n (0.7.0)
+    icheck-rails (1.0.2.1)
+      jquery-rails
+      rails (>= 3.1.0)
+      sass-rails
     jbuilder (2.3.1)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -254,6 +258,7 @@ DEPENDENCIES
   font-awesome-rails
   guard
   guard-minitest
+  icheck-rails
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks

@@ -45,4 +45,4 @@ gem 'bourbon'
 gem 'font-awesome-rails'
 gem 'rails-backbone'
 gem 'backbone-nested-attributes'
-
+gem 'icheck-rails'

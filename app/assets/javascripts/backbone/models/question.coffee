@@ -1,6 +1,7 @@
 class App.Models.Question extends Backbone.NestedAttributesModel
   defaults:
     title: ''
+    multiple: false
 
   relations: [
     {

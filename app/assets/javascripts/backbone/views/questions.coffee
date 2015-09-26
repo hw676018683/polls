@@ -23,6 +23,8 @@ class App.Views.Questions extends Backbone.View
   add: (question) ->
     questionView = new App.Views.Question model: question
     @$addQuestionBtn.before(questionView.render().el)
+    # iCheck after render on dom
+    questionView.initMultiple()
 
   remove: (question) ->
     @collection.remove(question)

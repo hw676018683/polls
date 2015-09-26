@@ -21,5 +21,13 @@ window.Polls =
           'indent','outdent'
       ]
 
+  initiCheck: (input_els)->
+    $(input_els).iCheck
+      checkboxClass: 'icheckbox_flat',
+      radioClass: 'iradio_flat'
+      increaseArea: '20%'
+      cursor: true
+      labelHover: true
+
 $ () ->
   Polls.initHeadroom()

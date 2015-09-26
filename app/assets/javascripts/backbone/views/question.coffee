@@ -2,6 +2,12 @@ class App.Views.Question extends Backbone.View
   tagName: 'div'
   className: "question",
 
+  multipleId: (value) ->
+    "multiple_#{value}_#{@cid}"
+  multipleName: () ->
+    "multiple[#{@cid}]"
+
+
   template: App.Templates.Question
 
   events:
@@ -26,6 +32,20 @@ class App.Views.Question extends Backbone.View
   choicesView: () ->
     new App.Views.Choices
       collection: @model.get('choices')
+
+  initMultiple: () ->
+    Polls.initiCheck @$('.multiple input')
+    @setMultiple()
+
+  setMultiple: () ->
+    if @model.get('multiple')
+      $("##{@multipleId(true)}").iCheck('check')
+    else
+      $("##{@multipleId(false)}").iCheck('check')
+    @$('.multiple input').on 'ifChecked', (event)=>
+      value = not not parseInt($(event.target).val())
+      @model.set multiple: value
+
 
   # Events
   removeQuestion: (e) ->

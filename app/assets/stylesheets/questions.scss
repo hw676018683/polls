@@ -52,5 +52,15 @@
       }
     }
   }
+
+  & > .multiple {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #F5F5F5;
+
+    .multiple-item {
+      display: inline-block;
+      margin-right: 2rem;
+    }
+  }
 }
 

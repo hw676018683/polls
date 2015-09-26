@@ -6,5 +6,15 @@ App.Templates.Question = _.template """
       <i class='fa fa-angle-up action js-toggle-question'></i>
     </div>
   </div>
+  <div class='multiple'>
+    <div class='multiple-item'>
+      <input type='radio' name='<%= this.multipleName() %>' id='<%= this.multipleId(false) %>' value='0'>
+      <label for='<%= this.multipleId(false) %>'>单选</label>
+    </div>
+    <div class='multiple-item'>
+      <input type='radio' name='<%= this.multipleName() %>' id='<%= this.multipleId(true) %>' value='1'>
+      <label for='<%= this.multipleId(true) %>'>多选</label>
+    </div>
+  </div>
 """
 

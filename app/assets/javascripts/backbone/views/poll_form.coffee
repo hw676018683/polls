@@ -47,6 +47,7 @@ class App.Views.PollForm extends Backbone.View
       complete: ()=>
         @_enableActionBtns()
         @_enableBtn(@$saveBtn)
+        @_setStatus('保存成功')
       success: @_saveSuccess
       error: @_saveError
 
@@ -60,6 +61,7 @@ class App.Views.PollForm extends Backbone.View
       complete: ()=>
         @_enableActionBtns()
         @_enableBtn(@$publishBtn)
+        @_setStatus('发布成功')
       success: @_saveSuccess
       error: @_saveError
 
@@ -102,3 +104,7 @@ class App.Views.PollForm extends Backbone.View
       @hasError = false
       $('.errors').html('')
       $('.error-msg').slideToggle('fast')
+
+  _setStatus: (status) ->
+    $statusDiv = $('.poll-status')
+    $statusDiv.html(status)

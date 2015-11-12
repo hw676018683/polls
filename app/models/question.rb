@@ -1,5 +1,5 @@
 class Question < ActiveRecord::Base
-  validates :title, presence: true
+  validates :title, presence: {message: '请填写问题标题'}
 
   belongs_to :poll
   has_many :choices, dependent: :destroy

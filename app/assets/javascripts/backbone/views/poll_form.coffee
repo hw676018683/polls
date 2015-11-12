@@ -27,6 +27,9 @@ class App.Views.PollForm extends Backbone.View
       self.model.set description: @getValue()
 
     @$el.find('.questions').replaceWith @questionsView().el
+
+    @hasError = false
+
     @
 
   questionsView: () ->
@@ -39,11 +42,13 @@ class App.Views.PollForm extends Backbone.View
     @_disableActionBtns()
     @_disableBtn(@$saveBtn)
 
-    @model.save {},
+    @model.save {}  ,
       nested: true
       complete: ()=>
         @_enableActionBtns()
         @_enableBtn(@$saveBtn)
+      success: @_saveSuccess
+      error: @_saveError
 
   publishPoll: (e)->
     e.stopPropagation()
@@ -55,6 +60,8 @@ class App.Views.PollForm extends Backbone.View
       complete: ()=>
         @_enableActionBtns()
         @_enableBtn(@$publishBtn)
+      success: @_saveSuccess
+      error: @_saveError
 
   # Private
   _enableActionBtns: ()->
@@ -79,3 +86,19 @@ class App.Views.PollForm extends Backbone.View
                     App.Templates.DisableSavePollBtnReplacement
 
     btn.html(replacement)
+
+  _saveError: (model, response, options) ->
+    if @hasError
+      $('.errors').html('')
+    else
+      @hasError = true
+      $('.error-msg').slideToggle('fast')
+
+    for attr, errorMsg of response.responseJSON
+        $('.errors').append('<li>' + errorMsg + '</li>')
+
+  _saveSuccess: (model, response, options) ->
+    if @hasError
+      @hasError = false
+      $('.errors').html('')
+      $('.error-msg').slideToggle('fast')

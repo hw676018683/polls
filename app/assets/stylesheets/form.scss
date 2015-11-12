@@ -11,6 +11,31 @@ input {
   border: 0;
 }
 
+.error-msg {
+  @include background-border();
+
+  display: none;
+  margin: 1em 0;
+
+  .error-head {
+    @include padding(1em 2em);
+    font-size: 22px;
+  }
+
+  .errors {
+    background-color: white;
+  }
+
+  .fa {
+    color: $error-color;
+    float: right;
+    font-size: 25px !important;
+  }
+  li {
+    @include padding(1em 2em);
+  }
+}
+
 .btn {
   @include border-color($primary-color);
   @include padding(6px 10px);

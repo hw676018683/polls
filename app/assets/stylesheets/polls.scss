@@ -5,9 +5,17 @@
     @include fill-parent();
     @include row(table);
 
-    .btn {
+    .poll-status {
+      float: left;
       padding: .8rem 0;
-      @include span-columns(6);
+      text-align: left;
+      @include span-columns(3);
+    }
+
+    .btn {
+      float: right;
+      padding: .8rem 0;
+      @include span-columns(3);
     }
   }
 }

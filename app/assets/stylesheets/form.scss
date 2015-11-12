@@ -36,6 +36,11 @@ input {
   }
 }
 
+.card.actions {
+  @include background-border();
+  @include padding(.8em 2em);
+}
+
 .btn {
   @include border-color($primary-color);
   @include padding(6px 10px);

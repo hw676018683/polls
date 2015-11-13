@@ -19,7 +19,6 @@ App.Templates.DisablePublishPollBtnReplacement = _.template """
   <i class='fa fa fa-spinner fa-pulse'></i> 发布中 ...
 """
 
-App.Templates.ErrorMsgPollStatusReplacement = (errMsg) ->
-  _.template """
-    <i class='fa fa fa-frown-o'></i> #{errMsg}
+App.Templates.ErrorMsgPollStatusReplacement = _.template """
+    <i class='fa fa fa-frown-o'></i> <%= errorMsg %>
   """

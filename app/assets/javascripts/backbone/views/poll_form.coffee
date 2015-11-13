@@ -48,9 +48,8 @@ class App.Views.PollForm extends Backbone.View
         @_enableActionBtns()
         @_enableBtn(@$saveBtn)
         @_setStatus('保存成功') unless @hasError
-      success: () -> @hasError = false
+      success: () => @hasError = false
       error: @_saveError
-      context: @
 
   publishPoll: (e)->
     e.stopPropagation()
@@ -63,9 +62,8 @@ class App.Views.PollForm extends Backbone.View
         @_enableActionBtns()
         @_enableBtn(@$publishBtn)
         @_setStatus('发布成功') unless @hasError
-      success: () -> @hasError = false
+      success: () => @hasError = false
       error: @_saveError
-      context: @
 
   # Private
   _enableActionBtns: ()->
@@ -91,12 +89,12 @@ class App.Views.PollForm extends Backbone.View
 
     btn.html(replacement)
 
-  _saveError: (model, response, options) ->
+  _saveError: (model, response, options) =>
     @hasError = true
 
     resJSON = response.responseJSON
     errorMsg = resJSON[Object.keys(resJSON)[0]]
-    replacement = App.Templates.ErrorMsgPollStatusReplacement(errorMsg)()
+    replacement = App.Templates.ErrorMsgPollStatusReplacement({errorMsg: errorMsg})
 
     @_setStatus(replacement)
 

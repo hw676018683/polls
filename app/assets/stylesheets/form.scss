@@ -11,31 +11,6 @@ input {
   border: 0;
 }
 
-.error-msg {
-  @include background-border();
-
-  display: none;
-  margin: 1em 0;
-
-  .error-head {
-    @include padding(1em 2em);
-    font-size: 22px;
-  }
-
-  .errors {
-    background-color: white;
-  }
-
-  .fa {
-    color: $error-color;
-    float: right;
-    font-size: 25px !important;
-  }
-  li {
-    @include padding(1em 2em);
-  }
-}
-
 .card.actions {
   @include background-border();
   @include padding(.8em 2em);

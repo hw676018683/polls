@@ -47,9 +47,10 @@ class App.Views.PollForm extends Backbone.View
       complete: ()=>
         @_enableActionBtns()
         @_enableBtn(@$saveBtn)
-        @_setStatus('保存成功')
-      success: @_saveSuccess
+        @_setStatus('保存成功') unless @hasError
+      success: () -> @hasError = false
       error: @_saveError
+      context: @
 
   publishPoll: (e)->
     e.stopPropagation()
@@ -61,9 +62,10 @@ class App.Views.PollForm extends Backbone.View
       complete: ()=>
         @_enableActionBtns()
         @_enableBtn(@$publishBtn)
-        @_setStatus('发布成功')
-      success: @_saveSuccess
+        @_setStatus('发布成功') unless @hasError
+      success: () -> @hasError = false
       error: @_saveError
+      context: @
 
   # Private
   _enableActionBtns: ()->
@@ -90,20 +92,13 @@ class App.Views.PollForm extends Backbone.View
     btn.html(replacement)
 
   _saveError: (model, response, options) ->
-    if @hasError
-      $('.errors').html('')
-    else
-      @hasError = true
-      $('.error-msg').slideToggle('fast')
+    @hasError = true
 
-    for attr, errorMsg of response.responseJSON
-        $('.errors').append('<li>' + errorMsg + '</li>')
+    resJSON = response.responseJSON
+    errorMsg = resJSON[Object.keys(resJSON)[0]]
+    replacement = App.Templates.ErrorMsgPollStatusReplacement(errorMsg)()
 
-  _saveSuccess: (model, response, options) ->
-    if @hasError
-      @hasError = false
-      $('.errors').html('')
-      $('.error-msg').slideToggle('fast')
+    @_setStatus(replacement)
 
   _setStatus: (status) ->
     $statusDiv = $('.poll-status')

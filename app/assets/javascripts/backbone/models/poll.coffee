@@ -14,3 +14,9 @@ class App.Models.Poll extends Backbone.NestedAttributesModel
         App.Models.Question
     }
   ]
+
+  subModels: []
+
+  initialize: () =>
+    questions = (@get 'questions').models
+    @subModels.push question for question in questions

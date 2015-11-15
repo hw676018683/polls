@@ -7,7 +7,9 @@ class App.Views.Questions extends Backbone.View
   events:
     'click .js-add-question': 'addQuestion'
 
-  initialize: () ->
+  initialize: (options) ->
+    @parent = options.parent if options.parent
+
     @render()
 
   render: () ->
@@ -34,6 +36,9 @@ class App.Views.Questions extends Backbone.View
   addQuestion: (e) ->
     e.stopPropagation()
 
-    @collection.push new App.Models.Question
-      choices: new App.Models.Choice
+    choice = new App.Models.Choice
+    question = new App.Models.Question choices: choice
 
+    @collection.push question
+
+    @parent.subModels.push question

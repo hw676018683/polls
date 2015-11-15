@@ -10,3 +10,9 @@ class App.Models.Question extends Backbone.NestedAttributesModel
         App.Models.Choice
     }
   ]
+
+  subModels: []
+
+  initialize: () =>
+    choices = (@get 'choices').models
+    @subModels.push choice for choice in choices

@@ -6,7 +6,9 @@ class App.Views.Choices extends Backbone.View
   events:
     'click .js-add-choice': 'addChoice'
 
-  initialize: () ->
+  initialize: (options) ->
+    @parent = options.parent if options.parent
+
     @render()
 
   render: () ->
@@ -27,5 +29,8 @@ class App.Views.Choices extends Backbone.View
   addChoice: (e) ->
     e.stopPropagation()
 
-    @collection.push new App.Models.Choice
+    choice = new App.Models.Choice
 
+    @collection.push choice
+
+    @parent.subModels.push choice

@@ -32,6 +32,7 @@ class App.Views.Question extends Backbone.View
   choicesView: () ->
     new App.Views.Choices
       collection: @model.get('choices')
+      parent: @model
 
   initMultiple: () ->
     Polls.initiCheck @$('.multiple input')
@@ -60,4 +61,3 @@ class App.Views.Question extends Backbone.View
     @$choicesBody.slideToggle()
     @$('.js-toggle-question').toggleClass('fa-angle-up')
     @$('.js-toggle-question').toggleClass('fa-angle-down')
-

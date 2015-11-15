@@ -35,6 +35,7 @@ class App.Views.PollForm extends Backbone.View
   questionsView: () ->
     new App.Views.Questions
       collection: @model.get('questions')
+      parent: @model
 
   # Events
   savePoll: (e)->

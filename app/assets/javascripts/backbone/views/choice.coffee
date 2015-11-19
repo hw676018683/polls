@@ -37,26 +37,24 @@ class App.Views.Choice extends Backbone.View
 
   _validate: (attrs, options) =>
     hasError = false
-    $title = @$el.children('.title').children('input')
-    $limit = @$el.children('.limit').children('input')
     $question = @$el.parent().parent()
 
     options.complete?()
 
     if !attrs.title.trim()
-      $title.addClass('error')
+      @$title.addClass('error')
       hasError = true
 
     if attrs.limit && !((/^[1-9]+[0-9]*]*$/).test(attrs.limit))
-      $limit.addClass('error').attr('placeholder', '限额非法').val('')
+      @$limit.addClass('error').attr('placeholder', '限额非法').val('')
       hasError = true
 
     if hasError
       $question.addClass('error')
       return 'error'
     else
-      if $title.hasClass('error')
-        $title.removeClass('error')
-      if $limit.hasClass('error')
-        $limit.removeClass('error')
+      if @$title.hasClass('error')
+        @$title.removeClass('error')
+      if @$limit.hasClass('error')
+        @$limit.removeClass('error')
       return undefined

@@ -16,13 +16,13 @@ class App.Views.Choices extends Backbone.View
 
     @$el.html @template()
 
-    @$actions  = @$('.actions')
+    @$actions = @$('.actions')
 
     @collection.each (choice) =>
       @add(choice)
 
   add: (choice) ->
-    choiceView = new App.Views.Choice  model: choice
+    choiceView = new App.Views.Choice model: choice
     @$actions.before(choiceView.render().el)
 
   # Events

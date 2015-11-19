@@ -76,3 +76,10 @@ input {
     cursor: not-allowed;
   }
 }
+
+.error {
+  border-color: hsla(46, 23%, 47%, .9) !important;
+  @include placeholder {
+    color: transparentize($error-color, .5);
+  }
+}

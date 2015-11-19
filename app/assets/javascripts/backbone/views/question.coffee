@@ -27,6 +27,8 @@ class App.Views.Question extends Backbone.View
 
     @$choicesBody = @$('.choices')
 
+    @model.validate = @_validate
+
     @
 
   choicesView: () ->
@@ -61,3 +63,16 @@ class App.Views.Question extends Backbone.View
     @$choicesBody.slideToggle()
     @$('.js-toggle-question').toggleClass('fa-angle-up')
     @$('.js-toggle-question').toggleClass('fa-angle-down')
+
+  # Private
+
+  _validate: (attrs, options) =>
+    options.complete?()
+
+    if !attrs.title.trim()
+      @$el.addClass('error').children('.title').children('input').addClass('error')
+      return 'error'
+    else
+      if !@$el.children('.error').length
+        @$el.removeClass('error').children('.title').children('input').removeClass('error')
+        return undefined

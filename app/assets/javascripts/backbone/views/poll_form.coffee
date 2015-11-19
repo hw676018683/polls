@@ -28,7 +28,7 @@ class App.Views.PollForm extends Backbone.View
 
     @$el.find('.questions').replaceWith @questionsView().el
 
-    @hasError = false
+    @model.validate = @_validate
 
     @
 
@@ -43,28 +43,32 @@ class App.Views.PollForm extends Backbone.View
     @_disableActionBtns()
     @_disableBtn(@$saveBtn)
 
-    @model.save {}  ,
+    result = @model.saveWithNestedValidation {}  ,
       nested: true
       complete: ()=>
         @_enableActionBtns()
         @_enableBtn(@$saveBtn)
-        @_setStatus('保存成功') unless @hasError
-      success: () => @hasError = false
+      success: () =>
+        @_setStatus('保存成功')
       error: @_saveError
+
+    @_setStatus('保存失败') if !result
 
   publishPoll: (e)->
     e.stopPropagation()
     @_disableActionBtns()
     @_disableBtn(@$publishBtn)
 
-    @model.save { status: 'published' },
+    result = @model.saveWithNestedValidation { status: 'published' },
       nested: true
       complete: ()=>
         @_enableActionBtns()
         @_enableBtn(@$publishBtn)
-        @_setStatus('发布成功') unless @hasError
-      success: () => @hasError = false
+      success: () =>
+        @_setStatus('发布成功')
       error: @_saveError
+
+    @_setStatus('发布失败') if !result
 
   # Private
   _enableActionBtns: ()->
@@ -91,8 +95,6 @@ class App.Views.PollForm extends Backbone.View
     btn.html(replacement)
 
   _saveError: (model, response, options) =>
-    @hasError = true
-
     resJSON = response.responseJSON
     errorMsg = resJSON[Object.keys(resJSON)[0]]
     replacement = App.Templates.ErrorMsgPollStatusReplacement({errorMsg: errorMsg})
@@ -102,3 +104,14 @@ class App.Views.PollForm extends Backbone.View
   _setStatus: (status) ->
     $statusDiv = $('.poll-status')
     $statusDiv.html(status)
+
+  _validate: (attrs, options) =>
+    options.complete?()
+
+    if !attrs.title.trim()
+      $('.poll').addClass('error').children('.title').addClass('error')
+      return 'error'
+    else
+      if $('.poll').hasClass('error')
+        $('.poll').removeClass('error').children('.title').removeClass('error')
+        return undefined

@@ -14,10 +14,14 @@ class App.Views.Choice extends Backbone.View
     @$title = @$('.title input')
     @$title.change () =>
       @model.set title: @$title.val().trim()
+    @$title.blur () =>
+      @model.isValid()
 
     @$limit = @$('.limit input')
     @$limit.change () =>
       @model.set limit: (parseInt(@$limit.val().trim()) or -1)
+    @$limit.blur () =>
+      @model.isValid()
 
     @model.validate = @_validate
 

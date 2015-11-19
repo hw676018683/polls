@@ -22,6 +22,8 @@ class App.Views.Question extends Backbone.View
     @$title = @$('.input')
     @$title.change () =>
       @model.set title: @$title.val().trim()
+    @$title.blur () =>
+      @model.isValid()
 
     @$el.append @choicesView().el
 

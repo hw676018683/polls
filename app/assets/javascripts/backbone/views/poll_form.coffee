@@ -21,6 +21,8 @@ class App.Views.PollForm extends Backbone.View
     @$title = @$('.title')
     @$title.change () =>
       @model.set title: @$title.val().trim()
+    @$title.blur () =>
+      @model.isValid()
 
     @$description = @$('.description')
     description_editor.on 'valuechanged', () ->

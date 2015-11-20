@@ -16,12 +16,18 @@ class App.Views.Choice extends Backbone.View
       @model.set title: @$title.val().trim()
     @$title.blur () =>
       @model.isValid()
+      @$el.removeClass('focus')
+    @$title.focus () =>
+      @$el.addClass('focus')
 
     @$limit = @$('.limit input')
     @$limit.change () =>
       @model.set limit: (parseInt(@$limit.val().trim()) or -1)
     @$limit.blur () =>
       @model.isValid()
+      @$el.removeClass('focus')
+    @$limit.focus () =>
+      @$el.addClass('focus')
 
     @model.validate = @_validate
 

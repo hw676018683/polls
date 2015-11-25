@@ -22,3 +22,7 @@ App.Templates.DisablePublishPollBtnReplacement = _.template """
 App.Templates.ErrorMsgPollStatusReplacement = _.template """
     <i class='fa fa fa-frown-o'></i> <%= errorMsg %>
   """
+
+App.Templates.RecoverPollLinkReplacement = _.template """
+    <a id='recover-poll' href='#'>点击恢复本地存档</a>
+  """

@@ -29,8 +29,17 @@ class App.Views.PollForm extends Backbone.View
       self.model.set description: @getValue()
 
     @$el.find('.questions').replaceWith @questionsView().el
+    Backbone.trigger('render:complete')
+    @questionsRendered = true
 
     @model.validate = @_validate
+
+    pollAttributes = localStorage.getItem 'poll'
+    if pollAttributes
+      @_setStatus App.Templates.RecoverPollLinkReplacement
+      $('#recover-poll').on 'click', {pollAttributes: pollAttributes}, (event) =>
+        poll = new App.Models.Poll(JSON.parse(event.data.pollAttributes))
+        @_recoverFrom poll
 
     @
 
@@ -52,6 +61,7 @@ class App.Views.PollForm extends Backbone.View
         @_enableBtn(@$saveBtn)
       success: () =>
         @_setStatus('保存成功')
+        window.setTimeout(@_autoSave, 1*60*1000) if localStorage
       error: @_saveError
 
     @_setStatus('保存失败') if !result
@@ -117,3 +127,21 @@ class App.Views.PollForm extends Backbone.View
       if $('.poll').hasClass('error')
         $('.poll').removeClass('error').children('.title').removeClass('error')
         return undefined
+
+  _autoSave: () =>
+    time = new Date()
+    replacement = "#{time.getHours()}：#{time.getMinutes()} 自动保存"
+
+    pollAttributes = JSON.stringify(@model.toJSON())
+    localStorage.setItem 'poll', pollAttributes
+
+    @_setStatus(replacement)
+
+    window.setTimeout(@_autoSave, 1*60*1000)
+
+  _recoverFrom: (poll) =>
+    @model = poll
+    @questionsRendered = false
+    @render()
+    @_autoSave()
+    @_setStatus('恢复成功')

@@ -19,7 +19,7 @@ class App.Views.Choice extends Backbone.View
 
     @$limit = @$('.limit input')
     @$limit.change () =>
-      @model.set limit: (parseInt(@$limit.val().trim()) or -1)
+      @model.set limit: (parseInt(@$limit.val().trim()) or '')
     @$limit.blur () =>
       @model.isValid()
 

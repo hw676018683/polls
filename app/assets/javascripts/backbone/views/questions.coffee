@@ -26,7 +26,10 @@ class App.Views.Questions extends Backbone.View
     questionView = new App.Views.Question model: question
     @$addQuestionBtn.before(questionView.render().el)
     # iCheck after render on dom
-    questionView.initMultiple()
+    if poll_form.questionsRendered
+      questionView.initMultiple()
+    else
+      Backbone.on('render:complete', questionView.initMultiple, questionView)
 
   remove: (question) ->
     @collection.remove(question)

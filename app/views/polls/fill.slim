@@ -1,0 +1,14 @@
+#poll_form.polls
+
+javascript:
+  pollId = "#{@poll.id}"
+
+coffee:
+  poll = new App.Models.Poll id: parseInt(pollId)
+
+  poll.fetch
+    success: (poll) ->
+      window.poll_form = new App.Views.PollForm
+        el: '#poll_form'
+        model: poll
+        method: 'fill'

@@ -1,2 +1,7 @@
 json.(choice, :id, :title, :limit)
-json.usersLength choice.user_ids.length
+
+if 'true' == params[:fill]
+  json.usersLength choice.user_ids.length
+else
+  json.user_ids choice.user_ids
+end

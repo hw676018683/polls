@@ -7,6 +7,7 @@ coffee:
   poll = new App.Models.Poll id: parseInt(pollId)
 
   poll.fetch
+    data: $.param({fill: true})
     success: (poll) ->
       window.poll_form = new App.Views.PollForm
         el: '#poll_form'

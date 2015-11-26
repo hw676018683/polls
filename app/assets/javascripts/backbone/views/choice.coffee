@@ -9,6 +9,7 @@ class App.Views.Choice extends Backbone.View
   initialize: (options) ->
     @multiple = options.multiple
     @questionId = options.questionId
+    @usersLength = @model.get 'usersLength'
 
   render: (method) ->
     @$el.html @template(method).call(this, @model.attributes)
@@ -37,6 +38,10 @@ class App.Views.Choice extends Backbone.View
 
   initiCheck: () =>
     Polls.initiCheck @$('input')
+    @$('input').on 'ifChecked', (event) =>
+      @model.set 'usersLength', -1
+    @$('input').on 'ifUnchecked', (event) =>
+      @model.set 'usersLength', @usersLength
 
   # Events
   removeChoice: (e) ->

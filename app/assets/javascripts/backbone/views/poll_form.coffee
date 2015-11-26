@@ -5,41 +5,43 @@ class App.Views.PollForm extends Backbone.View
     'click .js-save-poll': 'savePoll'
     'click .js-publish-poll': 'publishPoll'
 
-  initialize: () ->
-    @render()
+  initialize: (options) ->
+    if options.method then @render(options.method) else @render('edit')
 
-  render: () ->
+  render: (method) ->
     self = @
+    @method = method
 
-    form_html = this.template(this.model.attributes)
+    form_html = this.template(method)(this.model.attributes)
     @$el.html(form_html)
-    description_editor = Polls.initEditor @$('.description')
+    if 'edit' == method
+      description_editor = Polls.initEditor @$('.description')
 
-    @$saveBtn = @$('.actions button.js-save-poll')
-    @$publishBtn = @$('.actions button.js-publish-poll')
+      @$saveBtn = @$('.actions button.js-save-poll')
+      @$publishBtn = @$('.actions button.js-publish-poll')
 
-    @$title = @$('.title')
-    @$title.change () =>
-      @model.set title: @$title.val().trim()
-    @$title.blur () =>
-      @model.isValid()
+      @$title = @$('.title')
+      @$title.change () =>
+        @model.set title: @$title.val().trim()
+      @$title.blur () =>
+        @model.isValid()
 
-    @$description = @$('.description')
-    description_editor.on 'valuechanged', () ->
-      self.model.set description: @getValue()
+      @$description = @$('.description')
+      description_editor.on 'valuechanged', () ->
+        self.model.set description: @getValue()
+
+      pollAttributes = localStorage.getItem 'poll'
+      if pollAttributes
+        @_setStatus App.Templates.RecoverPollLinkReplacement
+        $('#recover-poll').on 'click', {pollAttributes: pollAttributes}, (event) =>
+          poll = new App.Models.Poll(JSON.parse(event.data.pollAttributes))
+          @_recoverFrom poll
+
+      @model.validate = @_validate
 
     @$el.find('.questions').replaceWith @questionsView().el
     Backbone.trigger('render:complete')
     @questionsRendered = true
-
-    @model.validate = @_validate
-
-    pollAttributes = localStorage.getItem 'poll'
-    if pollAttributes
-      @_setStatus App.Templates.RecoverPollLinkReplacement
-      $('#recover-poll').on 'click', {pollAttributes: pollAttributes}, (event) =>
-        poll = new App.Models.Poll(JSON.parse(event.data.pollAttributes))
-        @_recoverFrom poll
 
     @
 
@@ -47,6 +49,7 @@ class App.Views.PollForm extends Backbone.View
     new App.Views.Questions
       collection: @model.get('questions')
       parent: @model
+      method: @method
 
   # Events
   savePoll: (e)->
@@ -142,6 +145,6 @@ class App.Views.PollForm extends Backbone.View
   _recoverFrom: (poll) =>
     @model = poll
     @questionsRendered = false
-    @render()
+    @render('edit')
     @_autoSave()
     @_setStatus('恢复成功')

@@ -9,21 +9,32 @@ class App.Views.Choices extends Backbone.View
   initialize: (options) ->
     @parent = options.parent if options.parent
 
-    @render()
+    if options.method then @render(options.method) else @render('edit')
 
-  render: () ->
-    @listenTo(@collection, 'add', @add)
+  render: (method) ->
+    @method = method
 
-    @$el.html @template()
+    @$el.html @template(method)
 
-    @$actions = @$('.actions')
+    if 'edit' == method
+      @listenTo(@collection, 'add', @add)
+      @$actions = @$('.actions')
+    else if 'fill' == method
+      @$el.addClass 'fill'
 
     @collection.each (choice) =>
       @add(choice)
 
   add: (choice) ->
-    choiceView = new App.Views.Choice model: choice
-    @$actions.before(choiceView.render().el)
+    choiceView = new App.Views.Choice
+      model: choice
+      multiple: @parent.get('multiple')
+      questionId: @parent.get('id')
+    if 'edit' == @method
+      @$actions.before(choiceView.render(@method).el)
+    else if 'fill' == @method
+      @$el.append(choiceView.render(@method).el)
+      Backbone.on 'render:complete', choiceView.initiCheck, choiceView
 
   # Events
   addChoice: (e) ->

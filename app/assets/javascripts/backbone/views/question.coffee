@@ -14,22 +14,23 @@ class App.Views.Question extends Backbone.View
     'click .js-remove-question': 'removeQuestion'
     'click .js-toggle-question': 'toggleQuestion'
 
-  render: () ->
-    @listenTo(@model, 'remove', @remove)
+  render: (method) ->
+    @method = method
+    @$el.html @template(method).call(@, @model.attributes)
 
-    @$el.html @template(@model.attributes)
-
-    @$title = @$('.input')
-    @$title.change () =>
-      @model.set title: @$title.val().trim()
-    @$title.blur () =>
-      @model.isValid()
+    if 'edit' == method
+      @listenTo(@model, 'remove', @remove)
+      @$title = @$('.input')
+      @$title.change () =>
+        @model.set title: @$title.val().trim()
+      @$title.blur () =>
+        @model.isValid()
+      @model.validate = @_validate
 
     @$el.append @choicesView().el
 
     @$choicesBody = @$('.choices')
 
-    @model.validate = @_validate
 
     @
 
@@ -37,6 +38,7 @@ class App.Views.Question extends Backbone.View
     new App.Views.Choices
       collection: @model.get('choices')
       parent: @model
+      method: @method
 
   initMultiple: () ->
     Polls.initiCheck @$('.multiple input')

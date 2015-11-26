@@ -49,3 +49,33 @@
     }
   }
 }
+
+.choices.fill {
+  margin: 0;
+}
+
+.choice.fill {
+  border-bottom: 1px solid #D8D8D8;
+  padding: 1rem 2rem;
+
+
+  .choice-button {
+    display: inline-block;
+    width: auto;
+  }
+
+  .title {
+    display: inline-block;
+    margin-left: .5rem;
+    width: auto;
+  }
+
+  .limit {
+    color: #D8D8D8;
+    display: inline-block;
+    font-size: 12px;
+    height: 16px !important;
+    line-height: 16px;
+    width: auto;
+  }
+}

@@ -10,21 +10,27 @@ class App.Views.Questions extends Backbone.View
   initialize: (options) ->
     @parent = options.parent if options.parent
 
-    @render()
+    if options.method then @render(options.method) else @render('edit')
 
-  render: () ->
-    @listenTo(@collection, 'add', @add)
+  render: (method) ->
+    @method = method
 
-    @$el.html @template()
+    @$el.html @template(method)
 
-    @$addQuestionBtn = @$('.js-add-question')
+    if 'edit' == method
+      @listenTo(@collection, 'add', @add)
+      @$addQuestionBtn = @$('.js-add-question')
 
     @collection.each (question) =>
       @add(question)
 
   add: (question) ->
     questionView = new App.Views.Question model: question
-    @$addQuestionBtn.before(questionView.render().el)
+    if 'edit' == @method
+      @$addQuestionBtn.before(questionView.render('edit').el)
+    else
+      @$el.append(questionView.render(@method).el)
+
     # iCheck after render on dom
     if poll_form.questionsRendered
       questionView.initMultiple()

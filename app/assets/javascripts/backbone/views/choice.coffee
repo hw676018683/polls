@@ -6,26 +6,34 @@ class App.Views.Choice extends Backbone.View
   events:
     'click .js-remove-choice': 'removeChoice'
 
-  render: () ->
-    @listenTo(@model, 'remove', @remove)
+  initialize: (options) ->
+    @multiple = options.multiple
+    @questionId = options.questionId
 
-    @$el.html @template(@model.attributes)
+  render: (method) ->
+    @$el.html @template(method).call(this, @model.attributes)
 
-    @$title = @$('.title input')
-    @$title.change () =>
-      @model.set title: @$title.val().trim()
-    @$title.blur () =>
-      @model.isValid()
+    if 'edit' == method
+      @listenTo(@model, 'remove', @remove)
+      @$title = @$('.title input')
+      @$title.change () =>
+        @model.set title: @$title.val().trim()
+      @$title.blur () =>
+        @model.isValid()
 
-    @$limit = @$('.limit input')
-    @$limit.change () =>
-      @model.set limit: (parseInt(@$limit.val().trim()) or '')
-    @$limit.blur () =>
-      @model.isValid()
-
-    @model.validate = @_validate
+      @$limit = @$('.limit input')
+      @$limit.change () =>
+        @model.set limit: (parseInt(@$limit.val().trim()) or '')
+      @$limit.blur () =>
+        @model.isValid()
+      @model.validate = @_validate
+    else if 'fill' == method
+      @$el.addClass 'fill'
 
     @
+
+  initiCheck: () =>
+    Polls.initiCheck @$('input')
 
   # Events
   removeChoice: (e) ->

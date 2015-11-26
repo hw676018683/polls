@@ -38,4 +38,13 @@
     font-weight: bold;
     text-align: center;
   }
+
+  & > .description {
+    margin: 0;
+    padding: 0 2em;
+  }
+}
+
+.poll.fill {
+  background-color: white;
 }

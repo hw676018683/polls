@@ -20,6 +20,6 @@ App.Templates.Choice = (method) ->
       <% } %>
       <div class='title fill'><%= title %></div>
       <% if (limit) { %>
-       <div class='limit fill'>剩余 <%= limit %></div>
+       <div class='limit fill'>剩余 <%= limit - usersLength %></div>
       <% } %>
     """

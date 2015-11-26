@@ -29,6 +29,9 @@ class App.Views.Choice extends Backbone.View
       @model.validate = @_validate
     else if 'fill' == method
       @$el.addClass 'fill'
+      if @model.get('limit') && @model.get('limit') <= @model.get('usersLength')
+        @$el.addClass 'invalid'
+        @$el.children('input').attr('disabled', 'disabled')
 
     @
 

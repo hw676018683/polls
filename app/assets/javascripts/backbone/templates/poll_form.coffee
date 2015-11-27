@@ -42,4 +42,5 @@ App.Templates.FillActionReplacement = _.template """
     <div class='card actions fill'>
       <div class='poll-status'>填写完毕？</div>
       <a class='btn submitBtn' href='#'>提交</a>
+    </div>
 """

@@ -26,6 +26,8 @@ class App.Views.Question extends Backbone.View
       @$title.blur () =>
         @model.isValid()
       @model.validate = @_validate
+    else if 'fill' == method
+      @$el.addClass 'fill'
 
     @$el.append @choicesView().el
 

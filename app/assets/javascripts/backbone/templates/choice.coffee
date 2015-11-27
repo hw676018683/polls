@@ -13,7 +13,7 @@ App.Templates.Choice = (method) ->
     """
   else if 'fill' == method
     return _.template """
-      <% if (this.multiple) { %>
+      <% if (!this.multiple) { %>
         <input class='choice-button' type='radio' name="#{this.questionId}">
       <% } else { %>
         <input class='choice-button' type='checkbox' name="#{this.questionId}">

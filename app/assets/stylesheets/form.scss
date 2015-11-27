@@ -16,6 +16,17 @@ input {
   @include padding(.8em 2em);
 }
 
+.card.actions.fill {
+  background-color: #F5F5F5;
+  border-bottom: 1px solid #D8D8D8;
+  margin-top: 0;
+
+  .poll-status {
+    color: #D8D8D8;
+    margin-left: 1rem;
+  }
+}
+
 .btn {
   @include border-color($primary-color);
   @include padding(6px 10px);
@@ -66,6 +77,11 @@ input {
     &:hover {
       background: $primary-color;
     }
+  }
+
+  &.submitBtn {
+    color: black;
+    width: auto !important;
   }
 
   &:focus {

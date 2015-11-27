@@ -20,6 +20,8 @@ class App.Views.Questions extends Backbone.View
     if 'edit' == method
       @listenTo(@collection, 'add', @add)
       @$addQuestionBtn = @$('.js-add-question')
+    else if 'fill' == method
+      @$el.addClass 'fill'
 
     @collection.each (question) =>
       @add(question)

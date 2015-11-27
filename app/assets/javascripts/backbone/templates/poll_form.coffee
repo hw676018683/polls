@@ -37,3 +37,9 @@ App.Templates.ErrorMsgPollStatusReplacement = _.template """
 App.Templates.RecoverPollLinkReplacement = _.template """
     <a id='recover-poll' href='#'>点击恢复本地存档</a>
   """
+
+App.Templates.FillActionReplacement = _.template """
+    <div class='card actions fill'>
+      <div class='poll-status'>填写完毕？</div>
+      <a class='btn submitBtn' href='#'>提交</a>
+"""

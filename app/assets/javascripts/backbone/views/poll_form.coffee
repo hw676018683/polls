@@ -14,6 +14,7 @@ class App.Views.PollForm extends Backbone.View
 
     form_html = this.template(method)(this.model.attributes)
     @$el.html(form_html)
+
     if 'edit' == method
       description_editor = Polls.initEditor @$('.description')
 
@@ -36,8 +37,10 @@ class App.Views.PollForm extends Backbone.View
         $('#recover-poll').on 'click', {pollAttributes: pollAttributes}, (event) =>
           poll = new App.Models.Poll(JSON.parse(event.data.pollAttributes))
           @_recoverFrom poll
-
       @model.validate = @_validate
+
+    if 'fill' == method
+      @$el.append App.Templates.FillActionReplacement
 
     @$el.find('.questions').replaceWith @questionsView().el
     Backbone.trigger('render:complete')

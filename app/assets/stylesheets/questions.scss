@@ -68,3 +68,16 @@
     font-weight: bold;
   }
 }
+
+.question.fill {
+  border-bottom: 1px solid #D8D8D8;
+  margin-top: 0;
+
+  &:first-child {
+    margin-top: 2rem;
+  }
+
+  &:last-child {
+    border-bottom: 0px;
+  }
+}

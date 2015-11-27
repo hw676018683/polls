@@ -5,4 +5,14 @@ class Poll < ActiveRecord::Base
   belongs_to :user
 
   accepts_nested_attributes_for :questions, allow_destroy: true
+
+  def user_submitted?(user)
+    result = false
+
+    questions.each do |question|
+      result = true if question.choices.any? { |choice| choice.user_ids.include?(id) }
+    end
+
+    result
+  end
 end

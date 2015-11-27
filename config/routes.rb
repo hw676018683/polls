@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :polls, only: [:new, :create, :show, :update, :destroy] do
     member do
-      get :fill
+      get 'fill', to: 'polls#fill'
+      post 'fill', to: 'polls#submit'
     end
   end
 

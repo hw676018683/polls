@@ -34,6 +34,13 @@ class PollsController < ApplicationController
   def fill
   end
 
+  def submit
+    params[:choice_ids].each do |choice_id|
+      Choice.find(choice_id).submit current_user
+    end
+    head :no_content
+  end
+
   private
   def poll_params
     params.require(:poll).permit(:title, :description,

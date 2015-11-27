@@ -4,6 +4,7 @@ class App.Views.PollForm extends Backbone.View
   events:
     'click .js-save-poll': 'savePoll'
     'click .js-publish-poll': 'publishPoll'
+    'click .submitBtn': 'submitPoll'
 
   initialize: (options) ->
     if options.method then @render(options.method) else @render('edit')
@@ -41,6 +42,7 @@ class App.Views.PollForm extends Backbone.View
 
     if 'fill' == method
       @$el.append App.Templates.FillActionReplacement
+      @$submitBtn = $('.submit')
 
     @$el.find('.questions').replaceWith @questionsView().el
     Backbone.trigger('render:complete')
@@ -87,6 +89,21 @@ class App.Views.PollForm extends Backbone.View
       error: @_saveError
 
     @_setStatus('发布失败') if !result
+
+  submitPoll: (e) ->
+    choice_ids = []
+
+    for question in @model.get('questions').models
+      for choice in question.get('choices').models
+        choice_ids.push choice.get('id') if -1 == choice.get('usersLength')
+
+    if choice_ids.length
+      $.ajax
+        method: 'post'
+        url: "/polls/#{@model.id}/fill"
+        data: {choice_ids}
+    else
+      @_setStatus '请填写表单！'
 
   # Private
   _enableActionBtns: ()->

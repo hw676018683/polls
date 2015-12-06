@@ -10,7 +10,7 @@ class Poll < ActiveRecord::Base
     result = false
 
     questions.each do |question|
-      result = true if question.choices.any? { |choice| choice.user_ids.include?(id) }
+      result = true if question.choices.any? { |choice| choice.user_ids.include?(user.id) }
     end
 
     result

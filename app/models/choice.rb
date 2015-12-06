@@ -4,7 +4,7 @@ class Choice < ActiveRecord::Base
   belongs_to :question
 
   def submit(user)
-    if user_ids.length < limit && !user_ids.include?(user.id) && !question.poll.user_submitted?(user)
+    if limit and user_ids.length < limit and !question.poll.user_submitted?(user)
       (user_ids << user.id) && self.save
     end
   end

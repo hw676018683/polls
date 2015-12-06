@@ -45,6 +45,23 @@
   }
 }
 
-.poll.fill {
+.poll.fill,
+.poll.show {
   background-color: white;
+}
+
+.poll.show {
+  .action {
+    background-color: #F5F5F5;
+    display: table;
+    padding: 1rem 2rem;
+    width: 100%;
+  }
+
+  .collapseBtn {
+    color: black;
+    display: table-cell;
+    float: right;
+    text-decoration: none;
+  }
 }

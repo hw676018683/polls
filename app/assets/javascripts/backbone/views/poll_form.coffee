@@ -46,6 +46,13 @@ class App.Views.PollForm extends Backbone.View
 
     if 'show' == method
       @$el.append App.Templates.ShowActionReplacement
+      $('.collapseBtn').click () ->
+        $('.description').slideToggle()
+        collapseBtnReplacement = if $(this).html() == '收起描述'
+                                   '展开描述'
+                                 else
+                                   '收起描述'
+        $(this).html(collapseBtnReplacement)
 
     @$el.find('.questions').replaceWith @questionsView().el
     Backbone.trigger('render:complete')

@@ -28,6 +28,9 @@ App.Templates.PollForm = (method) ->
         <img class="cover" src="<%= cover %>">
         <div class="title"><%= title %></div>
         <div class="description"><%= description%></div>
+        <div class="action">
+          <a class="btn collapseBtn" href="#">收起描述</a>
+        </div>
       </div>
       <div class='questions show'><div>
     """

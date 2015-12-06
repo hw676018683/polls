@@ -23,3 +23,7 @@ App.Templates.Choice = (method) ->
        <div class='limit fill'>剩余 <%= limit - usersLength %></div>
       <% } %>
     """
+  else if 'show' == method
+    return _.template """
+      <div class='title show'><%= title %></div>
+    """

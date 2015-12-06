@@ -7,3 +7,5 @@ App.Templates.Choices = (method) ->
     """
   else if 'fill' == method
     return ''
+  else if 'show' == method
+    return ''

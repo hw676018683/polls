@@ -33,6 +33,8 @@ class App.Views.Choice extends Backbone.View
       if @model.get('limit') && @model.get('limit') <= @model.get('usersLength')
         @$el.addClass 'invalid'
         @$el.children('input').attr('disabled', 'disabled')
+    else if 'show' == method
+      @$el.addClass 'show'
 
     @
 

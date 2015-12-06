@@ -28,6 +28,8 @@ class App.Views.Question extends Backbone.View
       @model.validate = @_validate
     else if 'fill' == method
       @$el.addClass 'fill'
+    else if 'show' == method
+      @$el.addClass 'show'
 
     @$el.append @choicesView().el
 

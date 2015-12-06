@@ -5,3 +5,5 @@ App.Templates.Questions = (method) ->
     """
   else if 'fill' == method
     ''
+  else if 'show' == method
+    ''

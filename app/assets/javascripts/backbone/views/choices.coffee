@@ -21,6 +21,8 @@ class App.Views.Choices extends Backbone.View
       @$actions = @$('.actions')
     else if 'fill' == method
       @$el.addClass 'fill'
+    else if 'show' == method
+      @$el.addClass 'show'
 
     @collection.each (choice) =>
       @add(choice)
@@ -35,6 +37,8 @@ class App.Views.Choices extends Backbone.View
     else if 'fill' == @method
       @$el.append(choiceView.render(@method).el)
       Backbone.on 'render:complete', choiceView.initiCheck, choiceView
+    else if 'show' == @method
+      @$el.append(choiceView.render(@method).el)
 
   # Events
   addChoice: (e) ->

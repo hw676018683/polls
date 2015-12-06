@@ -44,6 +44,9 @@ class App.Views.PollForm extends Backbone.View
       @$el.append App.Templates.FillActionReplacement
       @$submitBtn = $('.submit')
 
+    if 'show' == method
+      @$el.append App.Templates.ShowActionReplacement
+
     @$el.find('.questions').replaceWith @questionsView().el
     Backbone.trigger('render:complete')
     @questionsRendered = true

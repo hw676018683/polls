@@ -22,6 +22,15 @@ App.Templates.PollForm = (method) ->
       </div>
       <div class='questions fill'><div>
     """
+  else if 'show' == method
+    return _.template """
+      <div class="poll show">
+        <img class="cover" src="<%= cover %>">
+        <div class="title"><%= title %></div>
+        <div class="description"><%= description%></div>
+      </div>
+      <div class='questions show'><div>
+    """
 
 App.Templates.DisableSavePollBtnReplacement = _.template """
   <i class='fa fa fa-spinner fa-pulse'></i> 保存中 ...

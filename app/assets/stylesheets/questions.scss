@@ -81,3 +81,11 @@
     border-bottom: 0px;
   }
 }
+
+.question.show {
+  & > .title {
+    background: white;
+    font-size: 26px;
+    text-align: center;
+  }
+}

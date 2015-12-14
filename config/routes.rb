@@ -4,6 +4,10 @@ Rails.application.routes.draw do
       get 'fill', to: 'polls#fill'
       post 'fill', to: 'polls#submit'
     end
+
+    collection do
+      get 'avatar', to: 'polls#avatar'
+    end
   end
 
   get '/auth/:provider/callback', to: 'sessions#create'

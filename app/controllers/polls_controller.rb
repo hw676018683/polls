@@ -41,6 +41,10 @@ class PollsController < ApplicationController
     head :no_content
   end
 
+  def avatar
+    render plain: User.find(params[:user_id]).headimgurl
+  end
+
   private
   def poll_params
     params.require(:poll).permit(:title, :description,

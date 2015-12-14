@@ -84,3 +84,39 @@
     color: #D8D8D8 !important;
   }
 }
+
+.choices.show {
+  padding-bottom: 1.5rem;
+}
+
+.choice.show {
+  display: block;
+  height: 48px;
+  margin-bottom: .5rem;
+  padding: 0 1.5rem;
+
+  div {
+    display: inline-block;
+  }
+
+  .title {
+    padding: 0 1rem;
+    width: auto;
+  }
+
+  .usersLength {
+    background-color: #454754;
+    color: white;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    width: 48px;
+  }
+
+  .user-avatar {
+    height: 48px;
+    margin-right: .5rem;
+    width: 48px;
+    vertical-align: middle;
+  }
+}

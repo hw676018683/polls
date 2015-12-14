@@ -25,5 +25,6 @@ App.Templates.Choice = (method) ->
     """
   else if 'show' == method
     return _.template """
+      <div class='usersLength'><%= user_ids.length %></div>
       <div class='title show'><%= title %></div>
     """

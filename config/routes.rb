@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     member do
       get 'fill', to: 'polls#fill'
       post 'fill', to: 'polls#submit'
+      get :report
     end
 
     collection do

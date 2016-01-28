@@ -1,6 +1,6 @@
 class PollsController < ApplicationController
   before_action :sign_in_required
-  before_action :find_poll, only: [:show, :destroy, :update, :fill]
+  before_action :find_poll, only: [:show, :destroy, :update, :fill, :report]
 
   def new
     @poll = current_user.polls.new
@@ -43,6 +43,13 @@ class PollsController < ApplicationController
 
   def avatar
     render plain: User.find(params[:user_id]).headimgurl
+  end
+
+  def report
+    respond_to do |format|
+      format.json { render layout: false }
+      format.html
+    end
   end
 
   private

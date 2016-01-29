@@ -54,6 +54,11 @@ class App.Views.PollForm extends Backbone.View
                                    '收起描述'
         $(this).html(collapseBtnReplacement)
 
+      App.pollsChannel = App.cable.subscriptions.create { channel: "PollsChannel", poll_id: @model.id },
+        received: (data) ->
+          id = "choice_#{data['id']}"
+          $("##{id}").text(data['select_count'])
+
     @$el.find('.questions').replaceWith @questionsView().el
     Backbone.trigger('render:complete')
     @questionsRendered = true

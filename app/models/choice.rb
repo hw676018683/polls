@@ -6,6 +6,8 @@ class Choice < ActiveRecord::Base
   def submit(user)
     if limit and user_ids.length < limit and !question.poll.user_submitted?(user)
       (user_ids << user.id) && self.save
+
+      ActionCable.server.broadcast "polls_#{question.poll_id}", { id: id, select_count: user_ids.count }
     end
   end
 end

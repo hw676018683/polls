@@ -11,3 +11,5 @@
 #= require backbone/application
 
 #= require turbolinks
+
+#= require channels/index

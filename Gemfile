@@ -23,6 +23,8 @@ group :development do
   gem 'quiet_assets'
   gem 'guard'
   gem 'guard-minitest'
+
+  gem 'ruby-jmeter'
 end
 
 

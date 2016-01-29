@@ -7,9 +7,11 @@
 #= require icheck
 #= require chart
 
-#= require polls
 #= require backbone/application
+#= require polls
 
 #= require turbolinks
 
 #= require channels/index
+
+#= require bootstrap-sprockets

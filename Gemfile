@@ -12,6 +12,7 @@ gem 'turbolinks'
 gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'slim-rails'
+gem 'bootstrap-sass'
 
 gem 'puma'
 

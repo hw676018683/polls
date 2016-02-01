@@ -24,7 +24,7 @@ App.Templates.PollForm = (method) ->
     """
   else if 'show' == method
     return _.template """
-      <div class="poll show">
+      <div class="poll item-show">
         <img class="cover" src="<%= cover %>">
         <div class="title"><%= title %></div>
         <div class="description"><%= description%></div>
@@ -32,7 +32,7 @@ App.Templates.PollForm = (method) ->
           <a class="btn collapseBtn" href="#">收起描述</a>
         </div>
       </div>
-      <div class='questions show'><div>
+      <div class='questions item-show'><div>
     """
 
 App.Templates.DisableSavePollBtnReplacement = _.template """

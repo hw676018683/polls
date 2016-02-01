@@ -51,7 +51,7 @@
 }
 
 .choices.fill,
-.choices.show {
+.choices.item-show {
   margin: 0;
 }
 
@@ -85,11 +85,11 @@
   }
 }
 
-.choices.show {
+.choices.item-show {
   padding-bottom: 1.5rem;
 }
 
-.choice.show {
+.choice.item-show {
   display: block;
   height: 48px;
   margin-bottom: .5rem;

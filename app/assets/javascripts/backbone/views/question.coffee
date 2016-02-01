@@ -29,7 +29,7 @@ class App.Views.Question extends Backbone.View
     else if 'fill' == method
       @$el.addClass 'fill'
     else if 'show' == method
-      @$el.addClass 'show'
+      @$el.addClass 'item-show'
 
     @$el.append @choicesView().el
 

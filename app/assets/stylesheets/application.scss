@@ -12,6 +12,9 @@
  *
  *= require_self
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 @import 'bourbon';
 @import 'grid-settings';
 @import 'neat';
@@ -27,6 +30,3 @@
 @import 'polls';
 @import 'questions';
 @import 'choices';
-
-@import "bootstrap-sprockets";
-@import "bootstrap";

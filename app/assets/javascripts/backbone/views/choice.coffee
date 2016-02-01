@@ -34,7 +34,7 @@ class App.Views.Choice extends Backbone.View
         @$el.addClass 'invalid'
         @$el.children('input').attr('disabled', 'disabled')
     else if 'show' == method
-      @$el.addClass 'show'
+      @$el.addClass 'item-show'
 
       if @model.get('user_ids').length > 0
         if @model.get('user_ids').length < 6

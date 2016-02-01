@@ -25,5 +25,5 @@ App.Templates.Question = (method) ->
     """
   else if 'show' == method
     return _.template """
-      <div class='title show'><%= title %></div>
+      <div class='title item-show'><%= title %></div>
     """

@@ -23,7 +23,7 @@ class App.Views.Questions extends Backbone.View
     else if 'fill' == method
       @$el.addClass 'fill'
     else if 'show' == method
-      @$el.addClass 'show'
+      @$el.addClass 'item-show'
 
     @collection.each (question) =>
       @add(question)

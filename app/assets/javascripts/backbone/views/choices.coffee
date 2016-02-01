@@ -22,7 +22,7 @@ class App.Views.Choices extends Backbone.View
     else if 'fill' == method
       @$el.addClass 'fill'
     else if 'show' == method
-      @$el.addClass 'show'
+      @$el.addClass 'item-show'
 
     @collection.each (choice) =>
       @add(choice)

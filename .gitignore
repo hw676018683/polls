@@ -26,5 +26,6 @@ doc/
 .DS_Store
 
 /config/redis/cable.yml
+/config/sidekiq.yml
 
 test.rb

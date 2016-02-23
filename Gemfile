@@ -51,3 +51,4 @@ gem 'backbone-nested-attributes'
 gem 'icheck-rails'
 
 gem 'actioncable', github: 'rails/actioncable', branch: 'archive'
+gem 'sidekiq'

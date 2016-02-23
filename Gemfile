@@ -23,7 +23,8 @@ group :development do
   gem 'better_errors'
   gem 'quiet_assets'
   gem 'guard'
-  gem 'guard-minitest'
+  gem 'guard-rspec', require: false
+  gem 'guard-livereload', require: false
 
   gem 'ruby-jmeter'
 end
@@ -37,6 +38,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'ffaker'
+
+  gem 'rspec-rails'
 end
 
 gem 'omniauth-oauth2'

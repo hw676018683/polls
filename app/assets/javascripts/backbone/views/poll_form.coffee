@@ -115,8 +115,9 @@ class App.Views.PollForm extends Backbone.View
     if choice_ids.length
       $.ajax
         method: 'post'
-        url: "/polls/#{@model.id}/fill"
-        data: {choice_ids}
+        contentType: 'application/json'
+        url: "/polls/#{@model.id}/votes"
+        data: JSON.stringify {result: choice_ids}
     else
       @_setStatus '请填写表单！'
 

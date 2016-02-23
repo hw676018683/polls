@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     collection do
       get 'avatar', to: 'polls#avatar'
     end
+
+    resources :votes, only: [:create]
   end
 
   get '/auth/:provider/callback', to: 'sessions#create'

@@ -2,7 +2,6 @@ require 'test_helper'
 
 class HomeControllerTest < ActionController::TestCase
   include ApplicationHelper
-  include SessionsHelper
 
   def setup
     @user = create :user

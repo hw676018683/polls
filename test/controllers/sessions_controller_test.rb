@@ -1,8 +1,6 @@
 require 'test_helper'
 
 class SessionsControllerTest < ActionController::TestCase
-  include SessionsHelper
-
   def setup
     request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:skylark]
   end

@@ -4,6 +4,8 @@ require 'rails/test_help'
 
 class ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods
+
+  include SessionsHelper
 end
 
 OmniAuth.config.test_mode = true

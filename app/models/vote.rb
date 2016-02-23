@@ -4,6 +4,8 @@ class Vote < ActiveRecord::Base
 
   before_validation :clean_result
 
+  validates :user_id, uniqness: { scope: [:poll_id] }
+
   private
 
   def clean_result

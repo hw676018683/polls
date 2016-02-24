@@ -20,6 +20,7 @@ group :development do
   gem 'web-console', '~> 2.0'
 
   gem 'spring'
+  gem 'spring-commands-rspec'
   gem 'better_errors'
   gem 'quiet_assets'
   gem 'guard'

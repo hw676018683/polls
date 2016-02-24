@@ -9,14 +9,14 @@ RSpec.describe Poll, :type => :model do
 
   describe '#create' do
     it 'cache limit of choices' do
-      expect(Poll.redis.lrange("choice_#{choice_a.id}_limit", 0, -1)).to match_array ['1','1','1']
+      expect(Poll.redis.lrange(Choice.limit_key(choice_a.id), 0, -1)).to match_array ['1','1','1']
     end
   end
 
   describe '#cache_voter' do
     it 'add user_id to redis list' do
       poll.cache_voter user
-      expect(Poll.redis.lrange("poll_#{poll.id}_voters", 0, -1).include?(user.id.to_s)).to be_truthy
+      expect(Poll.redis.lrange(Poll.voters_key(poll.id), 0, -1).include?(user.id.to_s)).to be_truthy
     end
   end
 
@@ -31,7 +31,7 @@ RSpec.describe Poll, :type => :model do
     it 'pops one limit if not beyong limit' do
       expect {
         poll.check_if_beyong_limit [choice_a.id]
-      }.to change { Poll.redis.lrange("choice_#{choice_a.id}_limit", 0, -1).size }.by -1
+      }.to change { Poll.redis.lrange(Choice.limit_key(choice_a.id), 0, -1).size }.by -1
     end
 
     it 'returns true if not beyong limit' do
@@ -41,7 +41,7 @@ RSpec.describe Poll, :type => :model do
     it 'donot pop any limit if beyong limit' do
       expect {
         poll.check_if_beyong_limit [choice_a.id, choice_b.id]
-      }.not_to change { Poll.redis.lrange("choice_#{choice_a.id}_limit", 0, -1).size }
+      }.not_to change { Poll.redis.lrange(Choice.limit_key(choice_a.id), 0, -1).size }
     end
 
     it 'returns false if beyong limit' do

@@ -3,11 +3,13 @@ class Choice < ActiveRecord::Base
 
   belongs_to :question
 
-  def submit(user)
-    if limit and user_ids.length < limit and !question.poll.user_submitted?(user)
-      (user_ids << user.id) && self.save
+  def submit(user_id)
+    (user_ids << user_id) && self.save
 
-      ActionCable.server.broadcast "polls_#{question.poll_id}", { id: id, select_count: user_ids.count }
-    end
+    ActionCable.server.broadcast "polls_#{question.poll_id}", { id: id, select_count: user_ids.count }
+  end
+
+  def self.limit_key choice_id
+    "#{Rails.env}_choice_#{choice_id}_limit"
   end
 end

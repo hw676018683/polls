@@ -1,6 +1,7 @@
 class VotesController < ApplicationController
   before_action :sign_in_required
   before_action :find_poll
+  before_action :find_vote, only: [:show]
 
   def create
     if @poll.submitted?(current_user)
@@ -16,6 +17,9 @@ class VotesController < ApplicationController
     end
   end
 
+  def show
+  end
+
   private
 
   def vote_params
@@ -24,5 +28,9 @@ class VotesController < ApplicationController
 
   def find_poll
     @poll = Poll.find params[:poll_id]
+  end
+
+  def find_vote
+    @vote = @poll.votes.find params[:id]
   end
 end

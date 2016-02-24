@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       get :report
     end
 
-    resources :votes, only: [:create]
+    resources :votes, only: [:create, :show]
   end
 
   get '/auth/:provider/callback', to: 'sessions#create'

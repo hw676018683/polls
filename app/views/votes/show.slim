@@ -1,0 +1,8 @@
+.poll.fill
+  .title = @poll.title
+  .description == @poll.description
+
+- @poll.questions.each do |question|
+  h4 = question.title
+  - Choice.where(id: (@vote.result & question.choice_ids)).each do |choice|
+    li.list-group-item = choice.title

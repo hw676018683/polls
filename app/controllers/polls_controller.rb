@@ -9,7 +9,7 @@ class PollsController < ApplicationController
   def create
     @poll = current_user.polls.build poll_params
     if @poll.save
-      render :show
+      render :show, location: poll_path(@poll)
     else
       render_json_error @poll
     end

@@ -12,7 +12,7 @@ class VotesController < ApplicationController
       else
         @poll.cache_voter current_user
         VoteWorker.perform_async current_user.id, @poll.id, params[:result]
-        render json: { state: :success }
+        render json: { state: :success }, location: poll_path(@poll)
       end
     end
   end

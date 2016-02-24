@@ -99,8 +99,8 @@ class App.Views.PollForm extends Backbone.View
       complete: ()=>
         @_enableActionBtns()
         @_enableBtn(@$publishBtn)
-      success: () =>
-        @_setStatus('发布成功')
+      success: (model, response, options)=>
+        window.location = options.xhr.getResponseHeader('Location')
       error: @_saveError
 
     @_setStatus('发布失败') if !result
@@ -118,6 +118,11 @@ class App.Views.PollForm extends Backbone.View
         contentType: 'application/json'
         url: "/polls/#{@model.id}/votes"
         data: JSON.stringify {result: choice_ids}
+        success: (data, textStatus, jqXHR)=>
+          window.location = jqXHR.getResponseHeader('Location')
+        error: (jqXHR, textStatus, errorThrown)=>
+          @_setStatus jqXHR.responseJSON.errors.join(',')
+
     else
       @_setStatus '请填写表单！'
 

@@ -36,21 +36,9 @@ class App.Views.Choice extends Backbone.View
     else if 'show' == method
       @$el.addClass 'item-show'
 
-      if @model.get('user_ids').length > 0
-        if @model.get('user_ids').length < 6
-          for user_id in @model.get('user_ids')
-            $.ajax
-              url: '/polls/avatar'
-              data: $.param user_id: user_id
-              success: (userAvatar) =>
-                @$el.append("<img class='user-avatar' src='#{userAvatar}'>")
-        else
-          for i in [0..5]
-            $.ajax
-              url: '/polls/avatar'
-              data: $.param user_id: @model.get('user_ids')[i]
-              success: (userAvatar) =>
-                @$el.append("<img class='user-avatar' src='#{userAvatar}'>")
+      if @model.get('user_avatars').length > 0
+        for avatar in @model.get('user_avatars')
+          @$el.append("<img class='user-avatar' src='#{avatar}'>")
 
     @
 

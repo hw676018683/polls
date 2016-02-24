@@ -41,10 +41,6 @@ class PollsController < ApplicationController
     head :no_content
   end
 
-  def avatar
-    render plain: User.find(params[:user_id]).headimgurl
-  end
-
   def report
     respond_to do |format|
       format.json { render layout: false }

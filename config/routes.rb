@@ -8,10 +8,6 @@ Rails.application.routes.draw do
       get :report
     end
 
-    collection do
-      get 'avatar', to: 'polls#avatar'
-    end
-
     resources :votes, only: [:create]
   end
 

@@ -6,7 +6,7 @@ class VotesController < ApplicationController
     if @poll.submitted?(current_user)
       render json: { state: :failure, errors: ['你已经投票'] }, status: 422
     else
-      if @poll.check_if_beyond_limit(vote_params[:result])
+      if @poll.check_if_beyong_limit(vote_params[:result])
         render json: { state: :failure, errors: ['超过限制'] }, status: 422
       else
         @poll.cache_voter current_user

@@ -12,16 +12,6 @@ class Poll < ActiveRecord::Base
 
   after_create :cache_limit
 
-  def user_submitted?(user)
-    result = false
-
-    questions.each do |question|
-      result = true if question.choices.any? { |choice| choice.user_ids.include?(user.id) }
-    end
-
-    result
-  end
-
   def check_if_beyong_limit choice_ids = []
     choice_ids = choice_ids - (choice_ids - Choice.joins(question: :poll).where(polls: { id: id }).where.not(limit: nil).pluck(:id))
     pop_choice_ids = []
@@ -47,19 +37,23 @@ class Poll < ActiveRecord::Base
 
   def submitted? user
     voter_ids = @@redis.lrange "poll_#{id}_voters", 0, -1
-    voter_ids.include?(user.id)
+    voter_ids.include?(user.id.to_s)
   end
 
   def cache_voter user
     @@redis.lpush "poll_#{id}_voters", user.id
   end
 
+  def self.redis
+    @@redis
+  end
+
   private
 
   def cache_limit
-    choices = Choice.joins(question: :poll).where(polls: { id: id }).where.not(limit: nil)
+    choices = Choice.joins(question: :poll).where(polls: { id: id }).where('choices.limit>0')
     choices.each do |choice|
-      @@redis.rpush "choice_#{choice.id}_limit", [1]*chocie.limit
+      @@redis.rpush "choice_#{choice.id}_limit", [1]*choice.limit
     end
   end
 end

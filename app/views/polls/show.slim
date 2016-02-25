@@ -1,5 +1,7 @@
 button.btn.btn-success.btn-xs.share-entrance type='button' data-toggle='modal' data-target='#poll_fill_qrcode' 投票地址
 
+= link_to '图表展示', report_poll_path(@poll), class: 'btn btn-info btn-xs'
+
 .modal.fade#poll_fill_qrcode role='dialog' aria-hidden='true' aria-labelledby='fill_qrcode_title'
   .modal-dialog
     .modal-content

@@ -6,6 +6,10 @@ App.Templates.PollForm = (method) ->
         <input class="title" placeholder="输入标题" type="text" value="<%= title %>">
         <textarea class="description"><%= description %></textarea>
       </div>
+      <div class="form-group">
+        <label>设定时间（可选）</label>
+        <input type="datetime-local" class="form-control writable_time" value="<%= writable_time %>">
+      </div>
       <div class='questions'></div>
       <div class='card actions'>
         <div class='poll-status'>编辑完成？</div>

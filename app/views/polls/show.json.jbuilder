@@ -1,4 +1,4 @@
-json.(@poll, :id, :title, :description)
+json.(@poll, :id, :title, :description, :writable_time)
 
 json.user do
   json.partial! partial: 'users/user', object: @poll.user, as: :user

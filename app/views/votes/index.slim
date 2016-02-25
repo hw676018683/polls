@@ -1,0 +1,2 @@
+- @votes.each do |vote|
+  li.list-group-item = link_to vote.poll.title, poll_vote_path(vote.poll, vote)

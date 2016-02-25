@@ -1,6 +1,6 @@
 class VotesController < ApplicationController
   before_action :sign_in_required
-  before_action :find_poll
+  before_action :find_poll, except: [:index]
   before_action :find_vote, only: [:show]
 
   def create
@@ -22,6 +22,10 @@ class VotesController < ApplicationController
   end
 
   def show
+  end
+
+  def index
+    @votes = current_user.votes.includes(:poll)
   end
 
   private

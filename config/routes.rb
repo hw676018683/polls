@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :votes, only: [:create, :show]
   end
 
+  resources :votes, only: [:index]
+
   get '/auth/:provider/callback', to: 'sessions#create'
 
   root 'home#index'

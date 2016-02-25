@@ -15,3 +15,5 @@
 #= require channels/index
 
 #= require bootstrap-sprockets
+
+#= require qrcode

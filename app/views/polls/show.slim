@@ -1,3 +1,24 @@
+button.btn.btn-success.btn-xs.share-entrance type='button' data-toggle='modal' data-target='#poll_fill_qrcode' 投票地址
+
+.modal.fade#poll_fill_qrcode role='dialog' aria-hidden='true' aria-labelledby='fill_qrcode_title'
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close type='button' data-dismiss='modal' aria-hidden='true' &times;
+        h4.modal-title#fill_qrcode_title= "#{@poll.title}的投票地址"
+      .modal-body
+        .row
+          .col-md-6.word-wrapper
+            p
+            | 扫描二维码
+            p
+              | 或者直接输入网址
+              =<> link_to fill_poll_url(@poll), fill_poll_url(@poll), target: '_blank'
+
+          .col-md-6
+            table.qrcode
+              #fill-qrcode.js-qrcode data-text="#{ fill_poll_url(@poll) }" data-width="196" data-height="196"
+
 #poll_form.polls
 
 javascript:

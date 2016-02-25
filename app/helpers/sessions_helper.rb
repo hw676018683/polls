@@ -34,6 +34,14 @@ module SessionsHelper
     end
   end
 
+  def sign_out
+    @current_user = nil
+    session[:current_user_id] = nil
+    session[:return_to] = nil
+    forget_me
+  end
+
+
   private
   def sign_in_from_session
     if session[:current_user_id].present?

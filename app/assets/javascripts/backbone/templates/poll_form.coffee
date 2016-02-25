@@ -60,3 +60,9 @@ App.Templates.FillActionReplacement = _.template """
       <a class='btn submitBtn' href='#'>提交</a>
     </div>
 """
+
+App.Templates.NotWritable = _.template """
+    <div class='card actions fill'>
+      <div class='poll-status'>现在还未到填写时间</div>
+    </div>
+"""

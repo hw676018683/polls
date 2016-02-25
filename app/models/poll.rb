@@ -13,7 +13,7 @@ class Poll < ActiveRecord::Base
   after_create :cache_limit
 
   def check_if_beyong_limit choice_ids = []
-    choice_ids = choice_ids - (choice_ids - Choice.joins(question: :poll).where(polls: { id: id }).where.not(limit: nil).pluck(:id))
+    choice_ids &= Choice.joins(question: :poll).where(polls: { id: id }).where.not(limit: nil).pluck(:id)
     pop_choice_ids = []
 
     choice_id = choice_ids.find do |choice_id|
@@ -42,6 +42,10 @@ class Poll < ActiveRecord::Base
 
   def cache_voter user
     @@redis.lpush Poll.voters_key(id), user.id
+  end
+
+  def writable?
+    (writable_time && Time.now < writable_time) ? false : true
   end
 
   def self.voters_key id

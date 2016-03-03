@@ -1,7 +1,7 @@
 .panel.panel-default
   .panel-heading 创建的投票
 
-  .list-group
+  ul.list-group
     - @polls.each do |poll|
       li.list-group-item.poll-item
         = link_to poll do

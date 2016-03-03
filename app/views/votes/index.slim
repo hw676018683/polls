@@ -1,2 +1,16 @@
-- @votes.each do |vote|
-  li.list-group-item = link_to vote.poll.title, poll_vote_path(vote.poll, vote)
+.panel.panel-default
+  .panel-heading 投票记录
+
+  ul.list-group
+    - @votes.each do |vote|
+      - poll = vote.poll
+      li.list-group-item.poll-item
+        = link_to poll_vote_path(poll, vote) do
+          h4.poll-tilte
+            =< truncate(poll.title, length: 25)
+          .poll-info
+            = timeago_tag vote.created_at, :nojs => true, class: 'pull-right'
+            .vote-counts
+              strong => poll.votes.count
+              | 人参与
+

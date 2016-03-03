@@ -25,7 +25,7 @@ class VotesController < ApplicationController
   end
 
   def index
-    @votes = current_user.votes.includes(:poll)
+    @votes = current_user.votes.includes(:poll).order(created_at: :desc)
   end
 
   private

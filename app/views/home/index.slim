@@ -3,9 +3,12 @@ section data-track-prefix="Header Section"
     = image_tag 'logo.png', size: '30x30'
 
     h1
-      | Poll是一个简单的投票工具.
+      | Poll是一个简易的投票工具.
     .layout-twothirds-center.text-center
       p
         | 具有实时展示投票结果，限制投票时间，限制选项额度等功能
-      = link_to '发起投票', new_poll_path, class: 'btn btn-primary'
+      - if current_user
+        = link_to '发起投票', new_poll_path, class: 'btn btn-primary'
+      - else
+        = link_to '登录', auth_path(:skylark), class: 'btn btn-primary'
 

@@ -2,6 +2,10 @@ class PollsController < ApplicationController
   before_action :sign_in_required
   before_action :find_poll, only: [:show, :destroy, :update, :fill, :report]
 
+  def index
+    @polls = current_user.polls.order(created_at: :desc)
+  end
+
   def new
     @poll = current_user.polls.new
   end

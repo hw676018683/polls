@@ -43,6 +43,8 @@
     margin: 0;
     padding: 0 2em;
   }
+
+  margin-bottom: 15px;
 }
 
 .poll.fill,
@@ -64,4 +66,42 @@
     float: right;
     text-decoration: none;
   }
+}
+
+li.poll-item {
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .poll-tilte {
+    font-size: 1.7rem;
+
+    .poll-status {
+      background-color: #F5F5F5;
+      border-radius: 2px;
+      font-weight: normal;
+      font-size: 0.7rem;
+      padding: .3rem 0.5rem;
+      vertical-align: middle;
+      color: grey;
+    }
+
+    .active {
+      color: #34BF20;
+    }
+  }
+
+  .poll-info {
+    font-size: 0.8rem;
+    color: grey;
+
+    .vote-counts {
+      strong {
+        color: #2b2b2b;
+        font-weight: bold;
+      }
+    }
+  }
+
 }

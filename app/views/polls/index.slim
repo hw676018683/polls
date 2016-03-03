@@ -1,0 +1,19 @@
+.panel.panel-default
+  .panel-heading 创建的投票
+
+  .list-group
+    - @polls.each do |poll|
+      li.list-group-item.poll-item
+        = link_to poll do
+          h4.poll-tilte
+            - if poll.writable_time.to_i > Time.now.to_i
+              span.poll-status 等待中
+            - else
+              span.poll-status.active 投票中
+
+            =< truncate(poll.title, length: 25)
+          .poll-info
+            = timeago_tag poll.created_at, :nojs => true, class: 'pull-right'
+            .vote-counts
+              strong => poll.votes.count
+              | 人参与

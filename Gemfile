@@ -56,3 +56,5 @@ gem 'icheck-rails'
 
 gem 'actioncable', github: 'rails/actioncable', branch: 'archive'
 gem 'sidekiq'
+
+gem 'rails-timeago'

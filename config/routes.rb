@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   match "/websocket", :to => ActionCable.server, via: [:get, :post]
 
-  resources :polls, only: [:new, :create, :show, :update, :destroy] do
+  resources :polls, except: [:edit] do
     member do
-      get 'fill', to: 'polls#fill'
+      get :fill
       post 'fill', to: 'polls#submit'
       get :report
     end

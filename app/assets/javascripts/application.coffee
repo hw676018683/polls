@@ -17,3 +17,6 @@
 #= require bootstrap-sprockets
 
 #= require qrcode
+#= require rails-timeago
+#= require locales/jquery.timeago.zh-CN.js
+#= require timeago

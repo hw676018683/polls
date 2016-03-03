@@ -1,11 +1,12 @@
 doctype html
 html
   head
-    title My App
+    title Awesome Poll
     meta name='viewport' content='width=device-width, initial-scale=1.0'
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+    link rel='icon' type='image/png' sizes='58x58' href=asset_path('logo.png')
 
   body
     header#header.header-fixed
@@ -14,7 +15,7 @@ html
         ul.nav.navbar-nav.navbar-right
           - if current_user
             li.dropdown
-              a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+              a.dropdown-toggle.user-nav-link aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
                 = image_tag current_user.headimgurl, class: 'user-headimg'
                 b.user-name= current_user.name
                 span.caret

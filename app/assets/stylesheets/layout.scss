@@ -70,3 +70,30 @@ div.container {
   @include background-border;
   background: #fff;
 }
+
+.section-wrapper {
+  margin:0 auto;
+  max-width:1300px;
+}
+
+h1 {
+  font-size:1.777em;
+  line-height:1.2em;
+  margin-top:1.6em;
+  font-family: "jaf-facitweb","Helvetica Neue",Arial,sans-serif;
+}
+
+section {
+  padding:4em 1em;
+}
+
+.layout-twothirds-center {
+  display:block;
+  max-width:585px;
+  margin:0 auto;
+  position:relative
+}
+
+.user-nav-link {
+  color: #ddd;
+}

@@ -37,8 +37,10 @@ window.Polls =
       success: (data, status, jqxhr)->
         for question in data.questions
           $('#report').append """
-            <div class="well well-sm">#{question.title}</div>
-            <canvas class="chart-view-container" id="question_#{question.id}" height="400" width="400" >
+            <div class="report-poll-item">
+              <div class="well well-sm">#{question.title}</div>
+              <canvas class="chart-view-container" id="question_#{question.id}" height="400" width="400" >
+            </div>
           """
           ctx = $("#question_#{question.id}").get(0).getContext("2d")
 

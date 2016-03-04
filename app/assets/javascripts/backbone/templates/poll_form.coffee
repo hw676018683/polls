@@ -8,7 +8,7 @@ App.Templates.PollForm = (method) ->
       </div>
       <div class="form-group">
         <label>设定时间（可选）</label>
-        <input type="datetime-local" class="form-control writable_time" value="<%= writable_time %>">
+        <input type="datetime-local" class="form-control started_at" value="<%= started_at %>">
       </div>
       <div class='questions'></div>
       <div class='card actions'>

@@ -32,9 +32,9 @@ class App.Views.PollForm extends Backbone.View
       description_editor.on 'valuechanged', () ->
         self.model.set description: @getValue()
 
-      @$writable_time = @$('.writable_time')
-      @$writable_time.change ()=>
-        @model.set writable_time: @$writable_time.val()
+      @$started_at = @$('.started_at')
+      @$started_at.change ()=>
+        @model.set started_at: @$started_at.val()
 
       pollAttributes = localStorage.getItem 'poll'
       if pollAttributes

@@ -54,7 +54,7 @@ class PollsController < ApplicationController
 
   private
   def poll_params
-    params.require(:poll).permit(:title, :description, :writable_time,
+    params.require(:poll).permit(:title, :description, :started_at,
                                  questions_attributes:
                                  [
                                    :id, :title, :multiple, :_destroy,

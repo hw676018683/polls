@@ -45,7 +45,7 @@ class Poll < ActiveRecord::Base
   end
 
   def writable?
-    (writable_time && Time.now < writable_time) ? false : true
+    (started_at && Time.now < started_at) ? false : true
   end
 
   def self.voters_key id

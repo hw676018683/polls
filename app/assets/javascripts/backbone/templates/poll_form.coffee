@@ -28,7 +28,7 @@ App.Templates.PollForm = (method) ->
         <div class="title"><%= title %></div>
         <div class="description"><%= description%></div>
       </div>
-      <div class="alert alert-time" role="alert"><%= time_description %></div>
+      <div class="alert alert-time <%= time_description ? '' : 'hide' %>" role="alert"><%= time_description %></div>
       <div class='questions fill'><div>
     """
   else if 'show' == method
@@ -41,7 +41,7 @@ App.Templates.PollForm = (method) ->
           <a class="btn collapseBtn" href="#">收起描述</a>
         </div>
       </div>
-      <div class="alert alert-time" role="alert"><%= time_description %></div>
+      <div class="alert alert-time <%= time_description ? '' : 'hide' %>" role="alert"><%= time_description %></div>
       <div class='questions item-show'><div>
     """
 

@@ -4,6 +4,8 @@ class App.Models.Poll extends Backbone.NestedAttributesModel
     description: ''
     cover: '/covers/cover-1.png'
     started_at: ''
+    ended_at: ''
+    time_description: ''
 
   urlRoot: '/polls'
   paramRoot: 'poll'

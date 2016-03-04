@@ -36,6 +36,10 @@ class App.Views.PollForm extends Backbone.View
       @$started_at.change ()=>
         @model.set started_at: @$started_at.val()
 
+      @$ended_at = @$('.ended_at')
+      @$ended_at.change ()=>
+        @model.set ended_at: @$ended_at.val()
+
       pollAttributes = localStorage.getItem 'poll'
       if pollAttributes
         @_setStatus App.Templates.RecoverPollLinkReplacement

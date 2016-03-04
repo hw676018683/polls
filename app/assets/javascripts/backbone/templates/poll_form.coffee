@@ -7,8 +7,12 @@ App.Templates.PollForm = (method) ->
         <textarea class="description"><%= description %></textarea>
       </div>
       <div class="form-group">
-        <label>设定时间（可选）</label>
+        <label>开始时间（可选）</label>
         <input type="datetime-local" class="form-control started_at" value="<%= started_at %>">
+      </div>
+      <div class="form-group">
+        <label>结束时间（可选）</label>
+        <input type="datetime-local" class="form-control ended_at" value="<%= ended_at %>">
       </div>
       <div class='questions'></div>
       <div class='card actions'>
@@ -36,6 +40,7 @@ App.Templates.PollForm = (method) ->
           <a class="btn collapseBtn" href="#">收起描述</a>
         </div>
       </div>
+      <div class="alert alert-time" role="alert"><%= time_description %></div>
       <div class='questions item-show'><div>
     """
 

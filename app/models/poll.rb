@@ -48,6 +48,13 @@ class Poll < ActiveRecord::Base
     (started_at && Time.now < started_at) ? false : true
   end
 
+  def time_description
+    description = []
+    description << (started_at ? "开始时间：#{started_at.strftime "%F %R"}" : nil)
+    description << (ended_at ? "结束时间：#{ended_at.strftime "%F %R"}" : nil)
+    description.compact.join('，')
+  end
+
   def self.voters_key id
     "#{Rails.env}_poll_#{id}_voters"
   end

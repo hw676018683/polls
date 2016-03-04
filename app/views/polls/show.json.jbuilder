@@ -1,4 +1,4 @@
-json.(@poll, :id, :title, :description, :started_at)
+json.(@poll, :id, :title, :description, :started_at, :ended_at, :time_description)
 json.writable @poll.writable?
 
 json.user do

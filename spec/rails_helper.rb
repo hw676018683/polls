@@ -56,4 +56,11 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.include FactoryGirl::Syntax::Methods
+
+  config.after(:all) do
+    if Rails.env.test?
+      deleted_keys = Poll.redis.keys 'test_poll_*'
+      Poll.redis.del deleted_keys if deleted_keys.any?
+    end
+  end
 end

@@ -49,10 +49,13 @@ class App.Views.PollForm extends Backbone.View
       @model.validate = @_validate
 
     if 'fill' == method
-      if @model.get('writable')
+      if @model.writable()
         @$el.append App.Templates.FillActionReplacement
+      else if @model.started()
+        @$el.append App.Templates.Ended
       else
-        @$el.append App.Templates.NotWritable
+        @$el.append App.Templates.NotStarted
+
       @$submitBtn = $('.submit')
 
     if 'show' == method

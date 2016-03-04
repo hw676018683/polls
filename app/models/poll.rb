@@ -45,7 +45,15 @@ class Poll < ActiveRecord::Base
   end
 
   def writable?
-    (started_at && Time.now < started_at) ? false : true
+    started? && !ended?
+  end
+
+  def started?
+    !(started_at && Time.now < started_at)
+  end
+
+  def ended?
+    ended_at && Time.now > ended_at
   end
 
   def time_description

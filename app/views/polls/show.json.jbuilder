@@ -1,5 +1,4 @@
 json.(@poll, :id, :title, :description, :started_at, :ended_at, :time_description)
-json.writable @poll.writable?
 
 json.user do
   json.partial! partial: 'users/user', object: @poll.user, as: :user

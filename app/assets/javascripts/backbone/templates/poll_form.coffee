@@ -28,6 +28,7 @@ App.Templates.PollForm = (method) ->
         <div class="title"><%= title %></div>
         <div class="description"><%= description%></div>
       </div>
+      <div class="alert alert-time" role="alert"><%= time_description %></div>
       <div class='questions fill'><div>
     """
   else if 'show' == method
@@ -66,8 +67,14 @@ App.Templates.FillActionReplacement = _.template """
     </div>
 """
 
-App.Templates.NotWritable = _.template """
+App.Templates.NotStarted = _.template """
     <div class='card actions fill'>
-      <div class='poll-status'>现在还未到填写时间</div>
+      <div class='poll-status warning'>现在还未到填写时间</div>
+    </div>
+"""
+
+App.Templates.Ended = _.template """
+    <div class='card actions fill'>
+      <div class='poll-status warning'>投票已结束</div>
     </div>
 """

@@ -31,3 +31,13 @@ class App.Models.Poll extends Backbone.NestedAttributesModel
       for subModel in @subModels
         subModel.subModels = []
         subModel.subModels.push choice for choice in subModel.get('choices').models
+
+  writable: ()=>
+    @started && !@ended
+
+  started: ()=>
+    started_at = @get('started_at')
+    !(started_at && new Date() < new Date(started_at))
+  ended: ()=>
+    ended_at = @get('ended_at')
+    ended_at && new Date() > new Date(ended_at)

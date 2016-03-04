@@ -17,7 +17,8 @@ class VotesController < ApplicationController
         end
       end
     else
-      render json: { errors: ['现在还未到投票时间'] }, status: 422
+      error = started? ? '投票已结束' : '现在还未到投票时间'
+      render json: { errors: [error]  }, status: 422
     end
   end
 

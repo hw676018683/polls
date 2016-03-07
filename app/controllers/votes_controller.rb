@@ -21,6 +21,15 @@ class VotesController < ApplicationController
       error = started? ? '投票已结束' : '现在还未到投票时间'
       render json: { errors: [error]  }, status: 422
     end
+
+    # @vote = @poll.votes.build user_id: current_user.id, entities_attributes: vote_params[:entities_attributes]
+
+    # if @vote.save
+    #   render json: { state: :success }, location: poll_path(@poll)
+
+    # else
+    #   render json: { errors: @vote.errors  }, status: 422
+    # end
   end
 
   def show

@@ -8,11 +8,12 @@ class VotesController < ApplicationController
       if @poll.submitted?(current_user)
         render json: { state: :failure, errors: ['你已经投票'] }, status: 422
       else
-        if @poll.check_if_beyong_limit(vote_params[:result])
+        choice_ids = vote_params[:entities_attributes].map { |entity| entity[:choice_id] }
+        if @poll.check_if_beyong_limit(choice_ids)
           render json: { state: :failure, errors: ['超过限制'] }, status: 422
         else
           @poll.cache_voter current_user
-          VoteWorker.perform_async current_user.id, @poll.id, params[:result]
+          VoteWorker.perform_async current_user.id, @poll.id, vote_params[:entities_attributes]
           render json: { state: :success }, location: poll_path(@poll)
         end
       end
@@ -32,7 +33,7 @@ class VotesController < ApplicationController
   private
 
   def vote_params
-    params.permit(result: [])
+    params.permit(entities_attributes: [:question_id, :choice_id])
   end
 
   def find_poll

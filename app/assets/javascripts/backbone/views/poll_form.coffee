@@ -120,18 +120,21 @@ class App.Views.PollForm extends Backbone.View
     @_setStatus('发布失败') if !result
 
   submitPoll: (e) ->
-    choice_ids = []
+    entities = []
 
     for question in @model.get('questions').models
       for choice in question.get('choices').models
-        choice_ids.push choice.get('id') if -1 == choice.get('usersLength')
+        entity =
+          question_id: question.get('id')
+          choice_id: choice.get('id')
+        entities.push entity
 
-    if choice_ids.length
+    if entities.length
       $.ajax
         method: 'post'
         contentType: 'application/json'
         url: "/polls/#{@model.id}/votes"
-        data: JSON.stringify {result: choice_ids}
+        data: JSON.stringify {entities_attributes: entities}
         success: (data, textStatus, jqXHR)=>
           window.location = jqXHR.getResponseHeader('Location')
         error: (jqXHR, textStatus, errorThrown)=>

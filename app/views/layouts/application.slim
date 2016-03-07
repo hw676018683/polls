@@ -16,7 +16,7 @@ html
           - if current_user
             li.dropdown
               a.dropdown-toggle.user-nav-link aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
-                = image_tag current_user.headimgurl, class: 'user-headimg'
+                = image_tag current_user.headimgurl, class: 'user-headimg', size: '25x25'
                 b.user-name= current_user.name
                 span.caret
               ul.dropdown-menu

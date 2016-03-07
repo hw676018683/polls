@@ -1,12 +1,15 @@
 class Vote < ActiveRecord::Base
   belongs_to :user
   belongs_to :poll
+  has_many :entities
 
   before_validation :clean_result
 
   validates :user_id, uniqueness: { scope: [:poll_id] }
 
   after_create :update_choices
+
+  accepts_nested_attributes_for :entities
 
   private
 

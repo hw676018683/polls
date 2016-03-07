@@ -6,5 +6,5 @@ ul.list-group
   - @poll.questions.each_with_index do |question, index|
     li.list-group-item
       h4 = "#{index + 1}、#{question.title}"
-      - Choice.where(id: (@vote.result & question.choice_ids)).each do |choice|
+      - Choice.where(id: @vote.entities.where(question_id: question.id).pluck(:choice_id)).each do |choice|
         = choice.title

@@ -64,16 +64,16 @@ desc "Deploys the current version to the server."
 task :deploy => :environment do
   deploy do
     # stop accepting new workers
-    # invoke :'sidekiq:quiet'
+    invoke :'sidekiq:quiet'
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
-    queue 'RAILS_ENV=production rake db:setup'
+    invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
 
     to :launch do
-      invoke :'puma:start'
-      invoke :'sidekiq:start'
+      invoke :'puma:phased_restart'
+      invoke :'sidekiq:restart'
     end
   end
 end

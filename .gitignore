@@ -29,5 +29,3 @@ doc/
 /config/secrets.yml
 
 test.rb
-
-config/puma.rb

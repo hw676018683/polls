@@ -32,5 +32,6 @@ end
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :cunchu,
     '6f7f661aa6b9b53f86b5caca6e4ee49e6763cff7440ce0df2f85631eb1e7fdc7',
-    'ac8ac12df5bbdc1120d9b8fbf27bd456414a22d5c7abd6858dfffb522303c12b'
+    'ac8ac12df5bbdc1120d9b8fbf27bd456414a22d5c7abd6858dfffb522303c12b',
+    provider_ignores_state: true
 end

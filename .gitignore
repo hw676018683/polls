@@ -25,7 +25,9 @@ doc/
 .secret
 .DS_Store
 
-/config/redis/cable.yml
 /config/sidekiq.yml
+/config/secrets.yml
 
 test.rb
+
+config/puma.rb

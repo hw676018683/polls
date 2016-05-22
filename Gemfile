@@ -28,6 +28,10 @@ group :development do
   gem 'guard-livereload', require: false
 
   gem 'ruby-jmeter'
+
+  gem 'mina'
+  gem 'mina-puma', require: false
+  gem 'mina-sidekiq', require: false
 end
 
 

@@ -6,7 +6,7 @@ json.questions do
     json.choices do
       json.array! question.choices do |choice|
         json.(choice, :id, :title, :limit)
-        json.select_count choice.user_ids.count
+        json.select_count choice.select_count
       end
     end
   end

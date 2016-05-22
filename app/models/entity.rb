@@ -20,8 +20,8 @@ class Entity < ActiveRecord::Base
   end
 
   def validate_limit
-    if choice.limit <= choice.select_count
-      errors.add(:base, 'test')
+    if choice.limit && choice.limit <= choice.select_count
+      errors.add(:base, '超过额度')
     end
   end
 end

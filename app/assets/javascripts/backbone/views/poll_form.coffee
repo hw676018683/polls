@@ -138,10 +138,10 @@ class App.Views.PollForm extends Backbone.View
         success: (data, textStatus, jqXHR)=>
           window.location = jqXHR.getResponseHeader('Location')
         error: (jqXHR, textStatus, errorThrown)=>
-          @_setStatus jqXHR.responseJSON.errors.join(',')
+          @_setErrorStatus jqXHR.responseJSON.errors.join(',')
 
     else
-      @_setStatus '请填写表单！'
+      @_setErrorStatus '请填写表单！'
 
   # Private
   _enableActionBtns: ()->
@@ -172,10 +172,20 @@ class App.Views.PollForm extends Backbone.View
     errorMsg = resJSON[Object.keys(resJSON)[0]]
     replacement = App.Templates.ErrorMsgPollStatusReplacement({errorMsg: errorMsg})
 
-    @_setStatus(replacement)
+    @_setErrorStatus(replacement)
 
   _setStatus: (status) ->
     $statusDiv = $('.poll-status')
+    $statusDiv.html(status)
+
+  _setErrorStatus: (status) ->
+    $statusDiv = $('.poll-status')
+    $statusDiv.addClass('warning')
+    $statusDiv.html(status)
+
+  _setActiveStatus: (status) ->
+    $statusDiv = $('.poll-status')
+    $statusDiv.addClass('active')
     $statusDiv.html(status)
 
   _validate: (attrs, options) =>
@@ -196,7 +206,7 @@ class App.Views.PollForm extends Backbone.View
     pollAttributes = JSON.stringify(@model.toJSON())
     localStorage.setItem 'poll', pollAttributes
 
-    @_setStatus(replacement)
+    @_setActiveStatus(replacement)
 
     window.setTimeout(@_autoSave, 1*60*1000)
 
@@ -205,4 +215,4 @@ class App.Views.PollForm extends Backbone.View
     @questionsRendered = false
     @render('edit')
     @_autoSave()
-    @_setStatus('恢复成功')
+    @_setActiveStatus('恢复成功')

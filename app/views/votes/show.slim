@@ -1,6 +1,8 @@
-.poll.fill
-  .title = @poll.title
-  .description == @poll.description
+.nounderline
+  = link_to @poll do
+    .poll.fill
+      .title = @poll.title
+      .description == @poll.description
 
 ul.list-group
   - @poll.questions.each_with_index do |question, index|

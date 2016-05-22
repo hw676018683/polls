@@ -125,3 +125,14 @@ li.poll-item {
 .btn-poll-show {
   background-color: #1B1916;
 }
+
+.active {
+  color: #34BF20;
+}
+
+.nounderline {
+  a {
+    text-decoration: none;
+    color: black;
+  }
+}

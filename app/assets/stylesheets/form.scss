@@ -7,10 +7,6 @@ input {
   }
 }
 
-#{$all-text-inputs} {
-  border: 0;
-}
-
 .card.actions {
   @include background-border();
   @include padding(.8em 2em);
@@ -30,72 +26,6 @@ input {
     color: #E03030;
   }
 
-}
-
-.btn {
-  @include border-color($primary-color);
-  @include padding(6px 10px);
-
-  appearance: none;
-  border: 0;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  -webkit-font-smoothing: antialiased;
-  text-decoration: none;
-  user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
-
-  cursor: pointer;
-  text-align: center;
-  @include border-width(1px 1px 1px 1px);
-  @include border-style(solid);
-  @include border-color(transparent);
-
-  &.btn-outline {
-    background: transparent;
-    @include border-color($accessory-color);
-    color: $accessory-color;
-
-    &:hover {
-      color: #ffffff;
-      background: $accessory-color;
-    }
-  }
-
-  &.btn-success {
-    color: #ffffff;
-    @include border-color(hsla(46, 23%, 47%, .9));
-    background: hsla(46, 23%, 47%, .9);
-
-    &:hover {
-      @include border-color($accessory-color);
-      background: $accessory-color;
-    }
-  }
-
-  &.btn-primary {
-    color: #ffffff;
-    background: hsla(231, 10%, 26%, .9);
-
-    &:hover {
-      background: $primary-color;
-    }
-  }
-
-  &.submitBtn {
-    color: black;
-    width: auto !important;
-  }
-
-  &:focus {
-    outline: none;
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-  }
 }
 
 .error {

@@ -124,10 +124,11 @@ class App.Views.PollForm extends Backbone.View
 
     for question in @model.get('questions').models
       for choice in question.get('choices').models
-        entity =
-          question_id: question.get('id')
-          choice_id: choice.get('id')
-        entities.push entity
+        if -1 == choice.get('usersLength')
+          entity =
+            question_id: question.get('id')
+            choice_id: choice.get('id')
+          entities.push entity
 
     if entities.length
       $.ajax

@@ -1,26 +1,24 @@
-require 'omniauth-oauth2'
-
 module OmniAuth
   module Strategies
-    class Skylark < OmniAuth::Strategies::OAuth2
-      option :name, :skylark
+    class Cunchu < OmniAuth::Strategies::OAuth2
+      option :name, :cunchu
 
       option :client_options, {
-        # site: 'http://skylarkly.com',
-        site: 'http://127.0.0.1:3000',
-        authorize_url: '/oauth/authorize'
+        :site => "http://cunchuhulian.skylarkly.com",
+        :authorize_url => "/oauth/authorize"
       }
 
-      uid { raw_info['id'] }
+      uid { raw_info["id"] }
 
       info do
         {
-          name: raw_info['name'],
-          nickname: raw_info['nickname'],
-          phone: raw_info['phone'],
-          qq: raw_info['qq'],
-          headimgurl: raw_info['headimgurl'],
-          organization_ids: raw_info['organization_ids']
+          :name => raw_info["name"],
+          :nickname => raw_info["nickname"],
+          :phone => raw_info["phone"],
+          :qq => raw_info["qq"],
+          :headimgurl => raw_info["headimgurl"],
+          :organization_ids => raw_info["root_organization_ids"],
+          :namespace_id => raw_info["namespace_id"]
         }
       end
 
@@ -32,8 +30,7 @@ module OmniAuth
 end
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :skylark,
-    '48288946910e8996aa1499cabf4b7eee4169fb9a7f27bde16863233cd8a84387',
-    '5463337b45d642d722b4e499210594500f0e4989eae3426292cc571282ca0778'
+  provider :cunchu,
+    '6f7f661aa6b9b53f86b5caca6e4ee49e6763cff7440ce0df2f85631eb1e7fdc7',
+    'ac8ac12df5bbdc1120d9b8fbf27bd456414a22d5c7abd6858dfffb522303c12b'
 end
-

@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
   include SessionsHelper
 
-  before_action :random_user
+  # before_action :random_user
 
   private
 

@@ -10,5 +10,5 @@ section data-track-prefix="Header Section"
       - if current_user
         = link_to '发起投票', new_poll_path, class: 'btn btn-primary'
       - else
-        = link_to '登录', auth_path(:skylark), class: 'btn btn-primary'
+        = link_to '登录', auth_path, class: 'btn btn-primary'
 

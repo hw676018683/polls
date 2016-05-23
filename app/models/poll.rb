@@ -10,6 +10,7 @@ class Poll < ActiveRecord::Base
 
   accepts_nested_attributes_for :questions, allow_destroy: true
 
+  before_create :set_unique_short_url_key
   after_create :cache_limit
 
   def check_if_beyong_limit choice_ids = []
@@ -78,5 +79,12 @@ class Poll < ActiveRecord::Base
     choices.each do |choice|
       @@redis.rpush Choice.limit_key(choice.id), [1]*choice.limit
     end
+  end
+
+  def set_unique_short_url_key
+    self.short_url_key = while true do
+                          unique_key = SecureRandom.urlsafe_base64(4)
+                          break unique_key unless Poll.exists?(short_url_key: unique_key)
+                        end
   end
 end

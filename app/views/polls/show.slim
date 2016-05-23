@@ -15,7 +15,7 @@ button.btn.btn-success.share-entrance type='button' data-toggle='modal' data-tar
             | 扫描二维码
             p
               | 或者直接输入网址
-              =<> link_to fill_poll_url(@poll), fill_poll_url(@poll), target: '_blank'
+              =<> link_to short_url(@poll.short_url_key), short_url(@poll.short_url_key), target: '_blank'
 
           .col-md-6
             table.qrcode

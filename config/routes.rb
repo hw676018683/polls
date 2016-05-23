@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   match "/websocket", :to => ActionCable.server, via: [:get, :post]
 
+  get '/v/:key' => "short_urls#show", as: :short
+
   resources :polls, except: [:edit] do
     member do
       get :fill

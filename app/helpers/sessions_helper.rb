@@ -24,7 +24,7 @@ module SessionsHelper
   def sign_in_required
     unless signed_in?
       store_location
-      redirect_to auth_path(:skylark)
+      redirect_to auth_path
     end
   end
 
